@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-22T08:26:51.632Z",
+  "sourceRepo": "https://github.com/white-base/logic-runtime-workspace",
+  "sourceRef": "5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4",
+  "sourceDirty": false,
+  "dataset": "ghost",
+  "isSample": true,
+  "complete": true,
+  "scope": "All non-private Ghost packages and their registered versions; direct latest-version expect declarations.",
+  "counts": {
+    "packages": 60,
+    "versions": 60,
+    "contracts": 45,
+    "patterns": 26,
+    "providers": 86
+  }
+}

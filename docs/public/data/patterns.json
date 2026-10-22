@@ -1,0 +1,1471 @@
+{
+  "items": [
+    {
+      "pattern": "inventory.available.console",
+      "scope": "local",
+      "usageCount": 3,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-commerce-admin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-admin#inventory.available.console",
+          "path": "inventory.available.console",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-admin",
+          "wildcard": false,
+          "source": "inventory.available.console",
+          "min": 0,
+          "max": 1,
+          "description": "실시간 재고 console은 선택 사항",
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-commerce-checkout-plugin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-checkout-plugin#inventory.available.console",
+          "path": "inventory.available.console",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-checkout-plugin",
+          "wildcard": false,
+          "source": "?inventory.available.console",
+          "min": 0,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-storefront#inventory.available.console",
+          "path": "inventory.available.console",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-storefront",
+          "wildcard": false,
+          "source": "inventory.available.console",
+          "min": 1,
+          "max": 1,
+          "description": "주문 전 실시간 재고를 확인합니다",
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-commerce-admin",
+          "kind": "ui_bundle",
+          "family": "commerce.admin",
+          "version": "1.0.0",
+          "description": "주문과 재고 운영 콘솔",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-admin#inventory.available.console",
+              "path": "inventory.available.console",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-admin",
+              "wildcard": false,
+              "source": "inventory.available.console",
+              "min": 0,
+              "max": 1,
+              "description": "실시간 재고 console은 선택 사항",
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-commerce-checkout-plugin",
+          "kind": "ui_bundle",
+          "family": "commerce.checkout.plugin",
+          "version": "1.0.0",
+          "description": "결제 form 구현을 사용자에게 위임하는 checkout plugin",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-checkout-plugin#inventory.available.console",
+              "path": "inventory.available.console",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-checkout-plugin",
+              "wildcard": false,
+              "source": "?inventory.available.console",
+              "min": 0,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "kind": "ui_bundle",
+          "family": "commerce.storefront",
+          "version": "1.0.0",
+          "description": "일반 고객용 쇼핑몰 완제품",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-storefront#inventory.available.console",
+              "path": "inventory.available.console",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-storefront",
+              "wildcard": false,
+              "source": "inventory.available.console",
+              "min": 1,
+              "max": 1,
+              "description": "주문 전 실시간 재고를 확인합니다",
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "blog.comment.thread",
+      "scope": "local",
+      "usageCount": 2,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-blog-cms",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-blog-cms#blog.comment.thread",
+          "path": "blog.comment.thread",
+          "scope": "local",
+          "owner": "@ghost/ui-blog-cms",
+          "wildcard": false,
+          "source": "blog.comment.thread",
+          "min": 0,
+          "max": 1,
+          "description": "댓글 moderation widget은 선택 사항",
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-blog-public",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-blog-public#blog.comment.thread",
+          "path": "blog.comment.thread",
+          "scope": "local",
+          "owner": "@ghost/ui-blog-public",
+          "wildcard": false,
+          "source": "blog.comment.thread",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-blog-cms",
+          "kind": "ui_bundle",
+          "family": "blog.cms",
+          "version": "1.0.0",
+          "description": "편집자용 블로그 CMS",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-blog-cms#blog.comment.thread",
+              "path": "blog.comment.thread",
+              "scope": "local",
+              "owner": "@ghost/ui-blog-cms",
+              "wildcard": false,
+              "source": "blog.comment.thread",
+              "min": 0,
+              "max": 1,
+              "description": "댓글 moderation widget은 선택 사항",
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-blog-public",
+          "kind": "ui_bundle",
+          "family": "blog.public",
+          "version": "1.0.0",
+          "description": "공개 글과 댓글을 제공하는 블로그",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-blog-public#blog.comment.thread",
+              "path": "blog.comment.thread",
+              "scope": "local",
+              "owner": "@ghost/ui-blog-public",
+              "wildcard": false,
+              "source": "blog.comment.thread",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "checkout.payment.form",
+      "scope": "local",
+      "usageCount": 2,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-commerce-checkout-plugin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-checkout-form#checkout.payment.form",
+          "path": "checkout.payment.form",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-checkout-form",
+          "wildcard": false,
+          "source": "pkg:@ghost/ui-commerce-checkout-form#checkout.payment.form",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-storefront#checkout.payment.form",
+          "path": "checkout.payment.form",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-storefront",
+          "wildcard": false,
+          "source": "checkout.payment.form",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-commerce-checkout-plugin",
+          "kind": "ui_bundle",
+          "family": "commerce.checkout.plugin",
+          "version": "1.0.0",
+          "description": "결제 form 구현을 사용자에게 위임하는 checkout plugin",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-checkout-form#checkout.payment.form",
+              "path": "checkout.payment.form",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-checkout-form",
+              "wildcard": false,
+              "source": "pkg:@ghost/ui-commerce-checkout-form#checkout.payment.form",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "kind": "ui_bundle",
+          "family": "commerce.storefront",
+          "version": "1.0.0",
+          "description": "일반 고객용 쇼핑몰 완제품",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-storefront#checkout.payment.form",
+              "path": "checkout.payment.form",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-storefront",
+              "wildcard": false,
+              "source": "checkout.payment.form",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "erp.finance.posting",
+      "scope": "api",
+      "usageCount": 2,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "version": "1.0.0",
+          "key": "api:erp.finance.posting",
+          "path": "erp.finance.posting",
+          "scope": "api",
+          "owner": null,
+          "wildcard": false,
+          "source": "api:erp.finance.posting",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-erp-finance-plugin",
+          "version": "1.0.0",
+          "key": "api:erp.finance.posting",
+          "path": "erp.finance.posting",
+          "scope": "api",
+          "owner": null,
+          "wildcard": false,
+          "source": "api:erp.finance.posting",
+          "min": 1,
+          "max": 1,
+          "description": "회계 전표 adapter를 선택하세요",
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "kind": "ui_bundle",
+          "family": "erp.admin",
+          "version": "1.0.0",
+          "description": "거래처·수주·회계 운영 ERP",
+          "expect": [
+            {
+              "key": "api:erp.finance.posting",
+              "path": "erp.finance.posting",
+              "scope": "api",
+              "owner": null,
+              "wildcard": false,
+              "source": "api:erp.finance.posting",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-erp-finance-plugin",
+          "kind": "ui_bundle",
+          "family": "erp.finance.plugin",
+          "version": "1.0.0",
+          "description": "회계 전표 adapter 선택을 소비자에게 위임하는 plugin",
+          "expect": [
+            {
+              "key": "api:erp.finance.posting",
+              "path": "erp.finance.posting",
+              "scope": "api",
+              "owner": null,
+              "wildcard": false,
+              "source": "api:erp.finance.posting",
+              "min": 1,
+              "max": 1,
+              "description": "회계 전표 adapter를 선택하세요",
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "erp.sales.workspace",
+      "scope": "local",
+      "usageCount": 2,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-erp-admin#erp.sales.workspace",
+          "path": "erp.sales.workspace",
+          "scope": "local",
+          "owner": "@ghost/ui-erp-admin",
+          "wildcard": false,
+          "source": "erp.sales.workspace",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-erp-finance-plugin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-erp-finance-plugin#erp.sales.workspace",
+          "path": "erp.sales.workspace",
+          "scope": "local",
+          "owner": "@ghost/ui-erp-finance-plugin",
+          "wildcard": false,
+          "source": "erp.sales.workspace",
+          "min": 0,
+          "max": 1,
+          "description": "영업 workspace 연결은 선택 사항",
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "kind": "ui_bundle",
+          "family": "erp.admin",
+          "version": "1.0.0",
+          "description": "거래처·수주·회계 운영 ERP",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-erp-admin#erp.sales.workspace",
+              "path": "erp.sales.workspace",
+              "scope": "local",
+              "owner": "@ghost/ui-erp-admin",
+              "wildcard": false,
+              "source": "erp.sales.workspace",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-erp-finance-plugin",
+          "kind": "ui_bundle",
+          "family": "erp.finance.plugin",
+          "version": "1.0.0",
+          "description": "회계 전표 adapter 선택을 소비자에게 위임하는 plugin",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-erp-finance-plugin#erp.sales.workspace",
+              "path": "erp.sales.workspace",
+              "scope": "local",
+              "owner": "@ghost/ui-erp-finance-plugin",
+              "wildcard": false,
+              "source": "erp.sales.workspace",
+              "min": 0,
+              "max": 1,
+              "description": "영업 workspace 연결은 선택 사항",
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "storefront.navigation",
+      "scope": "local",
+      "usageCount": 2,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-commerce-admin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-admin#storefront.navigation",
+          "path": "storefront.navigation",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-admin",
+          "wildcard": false,
+          "source": "?storefront.navigation",
+          "min": 0,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        },
+        {
+          "name": "@ghost/ui-commerce-checkout-plugin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-checkout-plugin#storefront.navigation",
+          "path": "storefront.navigation",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-checkout-plugin",
+          "wildcard": false,
+          "source": "storefront.navigation",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-commerce-admin",
+          "kind": "ui_bundle",
+          "family": "commerce.admin",
+          "version": "1.0.0",
+          "description": "주문과 재고 운영 콘솔",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-admin#storefront.navigation",
+              "path": "storefront.navigation",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-admin",
+              "wildcard": false,
+              "source": "?storefront.navigation",
+              "min": 0,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        },
+        {
+          "name": "@ghost/ui-commerce-checkout-plugin",
+          "kind": "ui_bundle",
+          "family": "commerce.checkout.plugin",
+          "version": "1.0.0",
+          "description": "결제 form 구현을 사용자에게 위임하는 checkout plugin",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-checkout-plugin#storefront.navigation",
+              "path": "storefront.navigation",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-checkout-plugin",
+              "wildcard": false,
+              "source": "storefront.navigation",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assem.shell.content",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-bun3",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-bun3#assem.shell.content",
+          "path": "assem.shell.content",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-bun3",
+          "wildcard": false,
+          "source": "assem.shell.content",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-bun3",
+          "kind": "ui_bundle",
+          "family": "assem.bun3",
+          "version": "1.0.0",
+          "description": "include 기반 동적 화면 조립 Bun",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-bun3#assem.shell.content",
+              "path": "assem.shell.content",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-bun3",
+              "wildcard": false,
+              "source": "assem.shell.content",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assem.shell.menu",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-bun3",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-bun3#assem.shell.menu",
+          "path": "assem.shell.menu",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-bun3",
+          "wildcard": false,
+          "source": "assem.shell.menu",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-bun3",
+          "kind": "ui_bundle",
+          "family": "assem.bun3",
+          "version": "1.0.0",
+          "description": "include 기반 동적 화면 조립 Bun",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-bun3#assem.shell.menu",
+              "path": "assem.shell.menu",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-bun3",
+              "wildcard": false,
+              "source": "assem.shell.menu",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assem.ui.brand",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-bun1",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-bun1#assem.ui.brand",
+          "path": "assem.ui.brand",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-bun1",
+          "wildcard": false,
+          "source": "assem.ui.brand",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-bun1",
+          "kind": "ui_bundle",
+          "family": "assem.bun1",
+          "version": "1.0.0",
+          "description": "assem 메뉴 조립 Bun",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-bun1#assem.ui.brand",
+              "path": "assem.ui.brand",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-bun1",
+              "wildcard": false,
+              "source": "assem.ui.brand",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assem.ui.breadcrumb",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-bun2",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-bun2#assem.ui.breadcrumb",
+          "path": "assem.ui.breadcrumb",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-bun2",
+          "wildcard": false,
+          "source": "assem.ui.breadcrumb",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-bun2",
+          "kind": "ui_bundle",
+          "family": "assem.bun2",
+          "version": "1.0.0",
+          "description": "assem 콘텐츠 조립 Bun",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-bun2#assem.ui.breadcrumb",
+              "path": "assem.ui.breadcrumb",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-bun2",
+              "wildcard": false,
+              "source": "assem.ui.breadcrumb",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assem.ui.menu",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-bun1",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-bun1#assem.ui.menu",
+          "path": "assem.ui.menu",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-bun1",
+          "wildcard": false,
+          "source": "assem.ui.menu",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-bun1",
+          "kind": "ui_bundle",
+          "family": "assem.bun1",
+          "version": "1.0.0",
+          "description": "assem 메뉴 조립 Bun",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-bun1#assem.ui.menu",
+              "path": "assem.ui.menu",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-bun1",
+              "wildcard": false,
+              "source": "assem.ui.menu",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assem.ui.table",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-bun2",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-bun2#assem.ui.table",
+          "path": "assem.ui.table",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-bun2",
+          "wildcard": false,
+          "source": "assem.ui.table",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-bun2",
+          "kind": "ui_bundle",
+          "family": "assem.bun2",
+          "version": "1.0.0",
+          "description": "assem 콘텐츠 조립 Bun",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-bun2#assem.ui.table",
+              "path": "assem.ui.table",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-bun2",
+              "wildcard": false,
+              "source": "assem.ui.table",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assemui1.page.header",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-ui1-page",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-ui1-page#assemui1.page.header",
+          "path": "assemui1.page.header",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-ui1-page",
+          "wildcard": false,
+          "source": "assemui1.page.header",
+          "min": 2,
+          "max": 3,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-ui1-page",
+          "kind": "ui_bundle",
+          "family": "assemui1.page",
+          "version": "1.0.0",
+          "description": "Bootstrap CDN 기반 좌측 메뉴 Page 조립 Bundle",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-ui1-page#assemui1.page.header",
+              "path": "assemui1.page.header",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-ui1-page",
+              "wildcard": false,
+              "source": "assemui1.page.header",
+              "min": 2,
+              "max": 3,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assemui1.page.navigation",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-ui1-page",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-ui1-page#assemui1.page.navigation",
+          "path": "assemui1.page.navigation",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-ui1-page",
+          "wildcard": false,
+          "source": "assemui1.page.navigation",
+          "min": 0,
+          "max": null,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-ui1-page",
+          "kind": "ui_bundle",
+          "family": "assemui1.page",
+          "version": "1.0.0",
+          "description": "Bootstrap CDN 기반 좌측 메뉴 Page 조립 Bundle",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-ui1-page#assemui1.page.navigation",
+              "path": "assemui1.page.navigation",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-ui1-page",
+              "wildcard": false,
+              "source": "assemui1.page.navigation",
+              "min": 0,
+              "max": null,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assemui1.page.screen",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-ui1-page",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-ui1-page#assemui1.page.screen",
+          "path": "assemui1.page.screen",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-ui1-page",
+          "wildcard": false,
+          "source": "assemui1.page.screen",
+          "min": 3,
+          "max": 3,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-ui1-page",
+          "kind": "ui_bundle",
+          "family": "assemui1.page",
+          "version": "1.0.0",
+          "description": "Bootstrap CDN 기반 좌측 메뉴 Page 조립 Bundle",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-ui1-page#assemui1.page.screen",
+              "path": "assemui1.page.screen",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-ui1-page",
+              "wildcard": false,
+              "source": "assemui1.page.screen",
+              "min": 3,
+              "max": 3,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "assemui1.page.title",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-assem-ui1-title-bundle",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-assem-ui1-title-bundle#assemui1.page.title",
+          "path": "assemui1.page.title",
+          "scope": "local",
+          "owner": "@ghost/ui-assem-ui1-title-bundle",
+          "wildcard": false,
+          "source": "assemui1.page.title",
+          "min": 1,
+          "max": null,
+          "description": "헤더 상단에 제품명·화면 제목·사용자 정보를 표시하는 타이틀 UI",
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-assem-ui1-title-bundle",
+          "kind": "ui_bundle",
+          "family": "assemui1.title.bundle",
+          "version": "1.0.0",
+          "description": "assem-ui1 상단 타이틀 조립 Bundle",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-assem-ui1-title-bundle#assemui1.page.title",
+              "path": "assemui1.page.title",
+              "scope": "local",
+              "owner": "@ghost/ui-assem-ui1-title-bundle",
+              "wildcard": false,
+              "source": "assemui1.page.title",
+              "min": 1,
+              "max": null,
+              "description": "헤더 상단에 제품명·화면 제목·사용자 정보를 표시하는 타이틀 UI",
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "blog.editor.toolbar",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-blog-cms",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-blog-cms#blog.editor.toolbar",
+          "path": "blog.editor.toolbar",
+          "scope": "local",
+          "owner": "@ghost/ui-blog-cms",
+          "wildcard": false,
+          "source": "blog.editor.toolbar",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-blog-cms",
+          "kind": "ui_bundle",
+          "family": "blog.cms",
+          "version": "1.0.0",
+          "description": "편집자용 블로그 CMS",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-blog-cms#blog.editor.toolbar",
+              "path": "blog.editor.toolbar",
+              "scope": "local",
+              "owner": "@ghost/ui-blog-cms",
+              "wildcard": false,
+              "source": "blog.editor.toolbar",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "blog.post.reader",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-blog-public",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-blog-public#blog.post.reader",
+          "path": "blog.post.reader",
+          "scope": "local",
+          "owner": "@ghost/ui-blog-public",
+          "wildcard": false,
+          "source": "blog.post.reader",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-blog-public",
+          "kind": "ui_bundle",
+          "family": "blog.public",
+          "version": "1.0.0",
+          "description": "공개 글과 댓글을 제공하는 블로그",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-blog-public#blog.post.reader",
+              "path": "blog.post.reader",
+              "scope": "local",
+              "owner": "@ghost/ui-blog-public",
+              "wildcard": false,
+              "source": "blog.post.reader",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "blog.public.navigation",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-blog-cms",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-blog-cms#blog.public.navigation",
+          "path": "blog.public.navigation",
+          "scope": "local",
+          "owner": "@ghost/ui-blog-cms",
+          "wildcard": false,
+          "source": "blog.public.navigation",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-blog-cms",
+          "kind": "ui_bundle",
+          "family": "blog.cms",
+          "version": "1.0.0",
+          "description": "편집자용 블로그 CMS",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-blog-cms#blog.public.navigation",
+              "path": "blog.public.navigation",
+              "scope": "local",
+              "owner": "@ghost/ui-blog-cms",
+              "wildcard": false,
+              "source": "blog.public.navigation",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "blog.subscription.paywall",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-blog-public",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-blog-public#blog.subscription.paywall",
+          "path": "blog.subscription.paywall",
+          "scope": "local",
+          "owner": "@ghost/ui-blog-public",
+          "wildcard": false,
+          "source": "blog.subscription.paywall",
+          "min": 0,
+          "max": 2,
+          "description": "구독 paywall은 최대 두 구현까지 선택",
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-blog-public",
+          "kind": "ui_bundle",
+          "family": "blog.public",
+          "version": "1.0.0",
+          "description": "공개 글과 댓글을 제공하는 블로그",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-blog-public#blog.subscription.paywall",
+              "path": "blog.subscription.paywall",
+              "scope": "local",
+              "owner": "@ghost/ui-blog-public",
+              "wildcard": false,
+              "source": "blog.subscription.paywall",
+              "min": 0,
+              "max": 2,
+              "description": "구독 paywall은 최대 두 구현까지 선택",
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "cart.view",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-storefront#cart.view",
+          "path": "cart.view",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-storefront",
+          "wildcard": false,
+          "source": "cart.view",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "kind": "ui_bundle",
+          "family": "commerce.storefront",
+          "version": "1.0.0",
+          "description": "일반 고객용 쇼핑몰 완제품",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-storefront#cart.view",
+              "path": "cart.view",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-storefront",
+              "wildcard": false,
+              "source": "cart.view",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "catalog.product.view",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-storefront#catalog.product.view",
+          "path": "catalog.product.view",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-storefront",
+          "wildcard": false,
+          "source": "catalog.product.view",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-commerce-storefront",
+          "kind": "ui_bundle",
+          "family": "commerce.storefront",
+          "version": "1.0.0",
+          "description": "일반 고객용 쇼핑몰 완제품",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-storefront#catalog.product.view",
+              "path": "catalog.product.view",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-storefront",
+              "wildcard": false,
+              "source": "catalog.product.view",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "erp.admin.navigation",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-erp-finance-plugin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-erp-finance-plugin#erp.admin.navigation",
+          "path": "erp.admin.navigation",
+          "scope": "local",
+          "owner": "@ghost/ui-erp-finance-plugin",
+          "wildcard": false,
+          "source": "erp.admin.navigation",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-erp-finance-plugin",
+          "kind": "ui_bundle",
+          "family": "erp.finance.plugin",
+          "version": "1.0.0",
+          "description": "회계 전표 adapter 선택을 소비자에게 위임하는 plugin",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-erp-finance-plugin#erp.admin.navigation",
+              "path": "erp.admin.navigation",
+              "scope": "local",
+              "owner": "@ghost/ui-erp-finance-plugin",
+              "wildcard": false,
+              "source": "erp.admin.navigation",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "erp.customer.workspace",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-erp-admin#erp.customer.workspace",
+          "path": "erp.customer.workspace",
+          "scope": "local",
+          "owner": "@ghost/ui-erp-admin",
+          "wildcard": false,
+          "source": "erp.customer.workspace",
+          "min": 0,
+          "max": 1,
+          "description": "CRM workspace는 선택 사항",
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "kind": "ui_bundle",
+          "family": "erp.admin",
+          "version": "1.0.0",
+          "description": "거래처·수주·회계 운영 ERP",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-erp-admin#erp.customer.workspace",
+              "path": "erp.customer.workspace",
+              "scope": "local",
+              "owner": "@ghost/ui-erp-admin",
+              "wildcard": false,
+              "source": "erp.customer.workspace",
+              "min": 0,
+              "max": 1,
+              "description": "CRM workspace는 선택 사항",
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "erp.finance.plugin.navigation",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-erp-admin#erp.finance.plugin.navigation",
+          "path": "erp.finance.plugin.navigation",
+          "scope": "local",
+          "owner": "@ghost/ui-erp-admin",
+          "wildcard": false,
+          "source": "?erp.finance.plugin.navigation",
+          "min": 0,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-erp-admin",
+          "kind": "ui_bundle",
+          "family": "erp.admin",
+          "version": "1.0.0",
+          "description": "거래처·수주·회계 운영 ERP",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-erp-admin#erp.finance.plugin.navigation",
+              "path": "erp.finance.plugin.navigation",
+              "scope": "local",
+              "owner": "@ghost/ui-erp-admin",
+              "wildcard": false,
+              "source": "?erp.finance.plugin.navigation",
+              "min": 0,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pattern": "order.admin",
+      "scope": "local",
+      "usageCount": 1,
+      "matchedBy": [
+        "pattern"
+      ],
+      "examples": [
+        {
+          "name": "@ghost/ui-commerce-admin",
+          "version": "1.0.0",
+          "key": "pkg:@ghost/ui-commerce-admin#order.admin",
+          "path": "order.admin",
+          "scope": "local",
+          "owner": "@ghost/ui-commerce-admin",
+          "wildcard": false,
+          "source": "order.admin",
+          "min": 1,
+          "max": 1,
+          "description": null,
+          "declScope": "flat"
+        }
+      ],
+      "consumers": [
+        {
+          "name": "@ghost/ui-commerce-admin",
+          "kind": "ui_bundle",
+          "family": "commerce.admin",
+          "version": "1.0.0",
+          "description": "주문과 재고 운영 콘솔",
+          "expect": [
+            {
+              "key": "pkg:@ghost/ui-commerce-admin#order.admin",
+              "path": "order.admin",
+              "scope": "local",
+              "owner": "@ghost/ui-commerce-admin",
+              "wildcard": false,
+              "source": "order.admin",
+              "min": 1,
+              "max": 1,
+              "description": null,
+              "declScope": "flat"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

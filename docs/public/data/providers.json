@@ -1,0 +1,1294 @@
+{
+  "items": [
+    {
+      "name": "@ghost/ui-assem-ui1",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem 브랜드 UI 조각",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.ui.brand",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.ui.brand"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui2",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem 메뉴와 breadcrumb UI 조각",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.ui.menu",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.ui.menu"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui2",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem 메뉴와 breadcrumb UI 조각",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.ui.breadcrumb",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.ui.breadcrumb"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-bun1",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "assem 메뉴 조립 Bun",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.shell.menu",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.shell.menu"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui3",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem 상점 목록 UI 조각",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.ui.table",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.ui.table"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-bun2",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "assem 콘텐츠 조립 Bun",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.shell.content",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.shell.content"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-bun3",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "include 기반 동적 화면 조립 Bun",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assem.app",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assem.app"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-title",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem-ui1 상단 타이틀 UI Module",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.title",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.title"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-title-bundle",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "assem-ui1 상단 타이틀 조립 Bundle",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.header",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.header"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-style1",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem-ui1 표 중심 주문 운영 화면 Style 1",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-style1",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem-ui1 표 중심 주문 운영 화면 Style 1",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.screen",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.screen"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-page",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "Bootstrap CDN 기반 좌측 메뉴 Page 조립 Bundle",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-style2",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem-ui1 칸반 중심 작업 화면 Style 2",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui1-style2",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "assem-ui1 칸반 중심 작업 화면 Style 2",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.screen",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.screen"
+      }
+    },
+    {
+      "name": "@ghost/ui-assem-ui2-title",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "작업 보드 센터 상단 타이틀 UI Module",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "assemui1.page.title",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "assemui1.page.title"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-reader",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "공개 글 읽기 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.post.reader",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.post.reader"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-reader",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "공개 글 읽기 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.content.renderer",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.content.renderer"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-reader",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "공개 글 읽기 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.content.render",
+        "path": "blog.content.render",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.content.render"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-reader",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "공개 글 읽기 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.content.preview",
+        "path": "blog.content.preview",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.content.preview"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-comment",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "댓글 widget",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.comment.thread",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.comment.thread"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-comment",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "댓글 widget",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.comment.moderation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.comment.moderation"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-comment",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "댓글 widget",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.comment.moderate",
+        "path": "blog.comment.moderate",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.comment.moderate"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-public",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "공개 글과 댓글을 제공하는 블로그",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.public.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.public.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-public",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "공개 글과 댓글을 제공하는 블로그",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.content.renderer",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.content.renderer"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-public",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "공개 글과 댓글을 제공하는 블로그",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.comment.thread",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.comment.thread"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-public",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "공개 글과 댓글을 제공하는 블로그",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.content.render",
+        "path": "blog.content.render",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.content.render"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-public",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "공개 글과 댓글을 제공하는 블로그",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.comment.moderate",
+        "path": "blog.comment.moderate",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.comment.moderate"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-editor",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "작성자용 글 편집 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.editor.toolbar",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.editor.toolbar"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-editor",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "작성자용 글 편집 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.content.editor",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.content.editor"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-editor",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "작성자용 글 편집 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.content.draft",
+        "path": "blog.content.draft",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.content.draft"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-cms",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "편집자용 블로그 CMS",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.cms.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.cms.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-cms",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "편집자용 블로그 CMS",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.editor.toolbar",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.editor.toolbar"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-cms",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "편집자용 블로그 CMS",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.content.editor",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.content.editor"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-cms",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "편집자용 블로그 CMS",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.content.draft",
+        "path": "blog.content.draft",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.content.draft"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-paywall-basic",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "기본 구독 유료벽",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.subscription.paywall",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.subscription.paywall"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-paywall-basic",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "기본 구독 유료벽",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.subscription.paywall.basic",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.subscription.paywall.basic"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-paywall-basic",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "기본 구독 유료벽",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.subscription.basic",
+        "path": "blog.subscription.basic",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.subscription.basic"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-paywall-pro",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "멤버십 등급 유료벽",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.subscription.paywall",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "blog.subscription.paywall"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-paywall-pro",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "멤버십 등급 유료벽",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "blog.subscription.paywall",
+        "scope": "local",
+        "owner": null,
+        "wildcard": true,
+        "source": "blog.subscription.paywall.*"
+      }
+    },
+    {
+      "name": "@ghost/ui-blog-paywall-pro",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "멤버십 등급 유료벽",
+      "channel": "db",
+      "contract": {
+        "key": "api:blog.subscription.pro",
+        "path": "blog.subscription.pro",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:blog.subscription.pro"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-order-admin",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "주문 조회와 처리 운영 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "order.admin",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "order.admin"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-order-admin",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "주문 조회와 처리 운영 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.order.fulfillment",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.order.fulfillment"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-order-admin",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "주문 조회와 처리 운영 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.order.fulfill",
+        "path": "commerce.order.fulfill",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.order.fulfill"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-order-admin",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "주문 조회와 처리 운영 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.quote.review",
+        "path": "commerce.quote.review",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.quote.review"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-inventory-available",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "가용 재고 관리 화면과 예약 어댑터",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "inventory.available.console",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "inventory.available.console"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-inventory-available",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "가용 재고 관리 화면과 예약 어댑터",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.inventory.reserve",
+        "path": "commerce.inventory.reserve",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.inventory.reserve"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "주문과 재고 운영 콘솔",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.admin.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.admin.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "주문과 재고 운영 콘솔",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.order.console",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.order.console"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "주문과 재고 운영 콘솔",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.order.fulfill",
+        "path": "commerce.order.fulfill",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.order.fulfill"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "주문과 재고 운영 콘솔",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.quote.review",
+        "path": "commerce.quote.review",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.quote.review"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-cart",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "장바구니 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "cart.view",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "cart.view"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-cart",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "장바구니 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.cart.session",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.cart.session"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-cart",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "장바구니 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.cart.pricing",
+        "path": "commerce.cart.pricing",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.cart.pricing"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-cart",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "장바구니 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.member.session",
+        "path": "commerce.member.session",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.member.session"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-catalog",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "상품 목록과 상세 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "catalog.product.view",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "catalog.product.view"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-catalog",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "상품 목록과 상세 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.catalog.search",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.catalog.search"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-catalog",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "상품 목록과 상세 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.catalog.read",
+        "path": "commerce.catalog.read",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.catalog.read"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-checkout-form",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "카드 결제 form과 승인 어댑터",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "checkout.payment.form",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "checkout.payment.form"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-checkout-form",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "카드 결제 form과 승인 어댑터",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "checkout.payment.form.card",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "checkout.payment.form.card"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-checkout-form",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "카드 결제 form과 승인 어댑터",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.payment.authorize",
+        "path": "commerce.payment.authorize",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.payment.authorize"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-checkout-plugin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "결제 form 구현을 사용자에게 위임하는 checkout plugin",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.checkout.payment.plugin",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.checkout.payment.plugin"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-checkout-plugin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "결제 form 구현을 사용자에게 위임하는 checkout plugin",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.payment.authorize",
+        "path": "commerce.payment.authorize",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.payment.authorize"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-inventory-ledger",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "원장 재고 관리 화면과 예약 어댑터",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "inventory.ledger.console",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "inventory.ledger.console"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-inventory-ledger",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "원장 재고 관리 화면과 예약 어댑터",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.inventory.reserve",
+        "path": "commerce.inventory.reserve",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.inventory.reserve"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-storefront",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "일반 고객용 쇼핑몰 완제품",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "storefront.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "storefront.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-storefront",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "일반 고객용 쇼핑몰 완제품",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "commerce.checkout.entry",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "commerce.checkout.entry"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-storefront",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "일반 고객용 쇼핑몰 완제품",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.catalog.read",
+        "path": "commerce.catalog.read",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.catalog.read"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-storefront",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "일반 고객용 쇼핑몰 완제품",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.cart.pricing",
+        "path": "commerce.cart.pricing",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.cart.pricing"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-storefront",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "일반 고객용 쇼핑몰 완제품",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.payment.authorize",
+        "path": "commerce.payment.authorize",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.payment.authorize"
+      }
+    },
+    {
+      "name": "@ghost/ui-commerce-storefront",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "일반 고객용 쇼핑몰 완제품",
+      "channel": "db",
+      "contract": {
+        "key": "api:commerce.inventory.reserve",
+        "path": "commerce.inventory.reserve",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:commerce.inventory.reserve"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-crm",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "거래처와 신용 한도 관리 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.customer.workspace",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.customer.workspace"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-crm",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "거래처와 신용 한도 관리 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.customer.lookup",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.customer.lookup"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-crm",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "거래처와 신용 한도 관리 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.customer.lookup",
+        "path": "erp.customer.lookup",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.customer.lookup"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-sales",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "수주와 출고 요청 관리 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.sales.workspace",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.sales.workspace"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-sales",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "수주와 출고 요청 관리 화면",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.sales.order.list",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.sales.order.list"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-sales",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "수주와 출고 요청 관리 화면",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.sales.order.read",
+        "path": "erp.sales.order.read",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.sales.order.read"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-finance-kgaap",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "K-GAAP 전표 발행 어댑터",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.finance.kgaap.adapter",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.finance.kgaap.adapter"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-finance-kgaap",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "K-GAAP 전표 발행 어댑터",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.finance.posting",
+        "path": "erp.finance.posting",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.finance.posting"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "거래처·수주·회계 운영 ERP",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.admin.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.admin.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "거래처·수주·회계 운영 ERP",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.sales.admin",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.sales.admin"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "거래처·수주·회계 운영 ERP",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.finance.posting",
+        "path": "erp.finance.posting",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.finance.posting"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-admin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "거래처·수주·회계 운영 ERP",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.customer.lookup",
+        "path": "erp.customer.lookup",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.customer.lookup"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-finance-ifrs",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "IFRS 전표 발행 어댑터",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.finance.ifrs.adapter",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.finance.ifrs.adapter"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-finance-ifrs",
+      "version": "1.0.0",
+      "kind": "ui_module",
+      "description": "IFRS 전표 발행 어댑터",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.finance.posting",
+        "path": "erp.finance.posting",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.finance.posting"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-finance-plugin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "회계 전표 adapter 선택을 소비자에게 위임하는 plugin",
+      "channel": "ui",
+      "contract": {
+        "key": null,
+        "path": "erp.finance.plugin.navigation",
+        "scope": "local",
+        "owner": null,
+        "wildcard": false,
+        "source": "erp.finance.plugin.navigation"
+      }
+    },
+    {
+      "name": "@ghost/ui-erp-finance-plugin",
+      "version": "1.0.0",
+      "kind": "ui_bundle",
+      "description": "회계 전표 adapter 선택을 소비자에게 위임하는 plugin",
+      "channel": "db",
+      "contract": {
+        "key": "api:erp.finance.posting",
+        "path": "erp.finance.posting",
+        "scope": "api",
+        "owner": null,
+        "wildcard": false,
+        "source": "api:erp.finance.posting"
+      }
+    }
+  ]
+}
