@@ -1,7 +1,7 @@
 # Logic 문서·조회 사이트 구성계획서
 
-> **상태**: 1차 구현 진행 중
-> **버전**: 0.3
+> **상태**: 1차 구현·Pages 배포 완료 · DNS/HTTPS 확인 중
+> **버전**: 0.4
 > **최종수정**: 2026-10-22
 > **대상 도메인**: `logic.bindmodel.com`
 > **사이트 저장소**: `white-base/white-lab-logic`
@@ -323,7 +323,7 @@ white-lab-logic/
 - [x] 규격·CLI/GUI·레지스트리·카탈로그·예제 문서 확인.
 - [x] 메뉴·화면·URL·데이터·원고 관리·배포 단계 보완.
 - [x] 작성자용 안내와 저장소 README 연결.
-- [ ] 후속: 사이트 화면·데이터 추출·빌드·배포 구현.
+- [x] 사이트 화면·데이터 추출·빌드·Pages 배포 구현.
 
 ## 15. 1차 구현 작업 계획과 진행
 
@@ -337,7 +337,7 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - [x] 데이터 무결성·검색/집계 동작·문서 빌드 확인.
 - [x] 데스크톱·모바일 화면과 직접 URL 접속 검증.
 - [x] GitHub Pages workflow·도메인 설정 안내·실행 README 작성.
-- [ ] 완료 항목·검증 결과·배포 상태를 이 파일에 기록.
+- [x] 완료 항목·검증 결과·배포 상태를 이 파일에 기록.
 
 ### 15.1 구현 중 결정 사항
 
@@ -356,4 +356,12 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - 빌드된 HTML의 내부 링크·정적 자산 경로 점검 통과. 작성자용 README와 계획서는 산출물에서 제외했다.
 - Chrome에서 한글 모듈 검색과 UI 필터, 계약 상세·사용 사례, 서로 다른 owner의 UI 패턴, 문서 검색·이동, 미수집 버전 상태를 확인했다.
 - 모바일 390px에서 홈·카탈로그의 가로 넘침이 없음을 확인했다. 상세 탭의 키보드 이동과 목록 검색 조건 복원도 점검했다.
-- 최종 운영 배포 결과와 HTTPS 상태는 게시 완료 후 추가 기록한다.
+- 원격에서도 테스트·빌드·배포 성공: [첫 Pages 배포](https://github.com/white-base/white-lab-logic/actions/runs/39751324918), 구현 커밋 `5bcf365`.
+
+### 15.3 배포·도메인 상태
+
+- 기본 브랜치 `main`에 구현을 반영했고 GitHub Actions의 build/deploy가 모두 성공했다.
+- Pages의 게시 소스는 GitHub Actions, Custom domain은 `logic.bindmodel.com`이다. 사이트가 실제 도메인 또는 하위 경로에 맞게 빌드되도록 Pages 메타데이터에서 base/origin을 읽는다.
+- 사용자가 가비아에 `CNAME logic → white-base.github.io`를 직접 추가하기로 했다. 최종 접속·인증서 상태는 DNS 반영 이후 확인한다.
+- 첫 배포에서 확인한 Action 런타임 경고를 해소하기 위해 Node 24 기반 Action으로 갱신했다. 사이트의 빌드 Node 버전은 22를 유지한다. Runner 이미지는 Ubuntu 24.04로 고정했다.
+- 갱신 근거: [checkout 변경 이력](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [pnpm Action](https://github.com/pnpm/action-setup/blob/v6/action.yml), [configure-pages 릴리스](https://github.com/actions/configure-pages/releases), [upload-pages-artifact 릴리스](https://github.com/actions/upload-pages-artifact/releases), [deploy-pages 릴리스](https://github.com/actions/deploy-pages/releases).
