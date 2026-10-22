@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>설치와 첫 조립 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/start/quickstart.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="index.html" aria-current="page">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>시작하기
+</h2>
+<nav aria-label="시작하기 문서"><a href="index.html">Logic 소개</a><a href="concepts.html">구성 요소와 용어</a><a href="quickstart.html" aria-current="page">설치와 첫 조립</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="설치와-첫-조립" tabindex="-1">설치와 첫 조립 <a class="header-anchor" href="#설치와-첫-조립" aria-label="Permalink to &quot;설치와 첫 조립&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-auto-cli/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>먼저 Node.js와 패키지 매니저를 준비합니다. 아래 명령은 원본 CLI README의 설치 방식입니다. 패키지 배포·접근 환경에 따라 사설 레지스트리 또는 참조 워크스페이스가 필요할 수 있습니다.
+</p>
+<h2 id="_1-cli-준비" tabindex="-1">1. CLI 준비 <a class="header-anchor" href="#_1-cli-준비" aria-label="Permalink to &quot;1. CLI 준비&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">mkdir</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-first</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-first</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -D</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-auto-cli</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --help</span></span></code></pre>
+</div>
+<h2 id="_2-ui-번들-초기화" tabindex="-1">2. UI 번들 초기화 <a class="header-anchor" href="#_2-ui-번들-초기화" aria-label="Permalink to &quot;2. UI 번들 초기화&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> init</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --name</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-first</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --kind</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ui_bundle</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --yes</span></span></code></pre>
+</div>
+<p><code>logic.json</code>, <code>index.js</code>와 패키지 정보가 준비됩니다. 기존 <code>package.json</code>은 병합하며, 진입점이 쓰는 <code>logic-runtime</code>을 자동 설치합니다. 자동 설치가 실패하면 출력된 안내에 따라 런타임을 설치하세요.
+</p>
+<p>워크스페이스 링크를 직접 구성하려면 <code>--no-install</code>을 사용하고 런타임을 별도로 연결합니다.
+</p>
+<h2 id="_3-선언과-조립-결과-확인" tabindex="-1">3. 선언과 조립 결과 확인 <a class="header-anchor" href="#_3-선언과-조립-결과-확인" aria-label="Permalink to &quot;3. 선언과 조립 결과 확인&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> validate</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --strict</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> check</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tree</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --contract</span></span></code></pre>
+</div>
+<p>초기 번들은 아직 기능을 포함하지 않은 출발점입니다. <code>validate</code>는 선언을, <code>check</code>는 계약과 조립 결과를 검사합니다. CI에서 경고까지 실패로 처리하려면 <code>logic check --strict</code>를 사용합니다.
+</p>
+<h2 id="_4-모듈-선택" tabindex="-1">4. 모듈 선택 <a class="header-anchor" href="#_4-모듈-선택" aria-label="Permalink to &quot;4. 모듈 선택&quot;">​</a>
+</h2>
+<p><a href="../catalog/index.html">모듈 조회</a>에서 종류, 계약, 의존 관계를 확인합니다. 현재 카탈로그의 <code>@ghost/*</code>는 원본 워크스페이스에 있는 샘플이므로 공개 npm 설치 명령으로 그대로 사용하지 마세요. 실제 조립은 <a href="../examples/basic.html">워크스페이스 기본 예제</a>에서 이어갈 수 있습니다.
+</p>
+<p>설치 가능한 패키지를 고른 뒤에는 관계에 따라 다음 형태로 선언합니다.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 실제 사용 가능한 패키지 이름으로 바꾸세요.</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">packag</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> include</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">packag</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span></span></code></pre>
+</div>
+<h2 id="_5-gui-열기" tabindex="-1">5. GUI 열기 <a class="header-anchor" href="#_5-gui-열기" aria-label="Permalink to &quot;5. GUI 열기&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exec</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> gui</span></span></code></pre>
+</div>
+<p>로컬 서버가 현재 조립을 표시합니다. 사이트의 카탈로그와 달리, 로컬 GUI는 실제 프로젝트를 읽고 변경안을 적용할 수 있습니다.
+</p>
+<p>다음은 <a href="../guide/index.html">조립 흐름</a>과 <a href="../examples/basic.html">기본 예제</a>입니다.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="concepts.html"><small>이전 문서</small><span>구성 요소와 용어</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#_1-cli-준비">1. CLI 준비 ​</a><a href="#_2-ui-번들-초기화">2. UI 번들 초기화 ​</a><a href="#_3-선언과-조립-결과-확인">3. 선언과 조립 결과 확인 ​</a><a href="#_4-모듈-선택">4. 모듈 선택 ​</a><a href="#_5-gui-열기">5. GUI 열기 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>런타임 API · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/reference/runtime.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="index.html" aria-current="page">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>레퍼런스
+</h2>
+<nav aria-label="레퍼런스 문서"><a href="index.html">전체 보기</a><a href="manifest.html">logic.json</a><a href="contracts.html">계약 문자열</a><a href="cli.html">CLI 명령어</a><a href="runtime.html" aria-current="page">런타임 API</a><a href="api.html">공개 조회 API</a><a href="diagnostics.html">오류와 버전</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="런타임-api" tabindex="-1">런타임 API <a class="header-anchor" href="#런타임-api" aria-label="Permalink to &quot;런타임 API&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-runtime/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p><code>logic-runtime</code>은 모듈 작성자가 사용하는 파사드입니다. 조립 코어와 UI/SQL Context API를 제공합니다.
+</p>
+<h2 id="define" tabindex="-1">define <a class="header-anchor" href="#define" aria-label="Permalink to &quot;define&quot;">​</a>
+</h2>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { define } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &#39;logic-runtime&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> default</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> define</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">meta</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">ctx</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  // Context 설정과 계약 등록</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">});</span></span></code></pre>
+</div>
+<h2 id="포함-모듈-접근" tabindex="-1">포함 모듈 접근 <a class="header-anchor" href="#포함-모듈-접근" aria-label="Permalink to &quot;포함 모듈 접근&quot;">​</a>
+</h2>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> *</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> entry </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &#39;./index.js&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> ctx</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> entry.default;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">ctx.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">bindModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(entry);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">const</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">menu</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ctx.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">getIncludedModules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&#39;assem.shell.menu&#39;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (menu) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  await</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> menu.module.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">renderMenuRegion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">({ ctx: menu.ctx });</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<p><code>getIncludedModules(contract?)</code>는 현재 Context의 실효 include에서 expect를 충족하는 항목을 반환합니다. 각 항목은 <code>{ contract, pkg, ctx, module }</code>이며 <code>module</code>은 최초 import의 ESM namespace입니다.
+</p>
+<p>하위 bundle의 render 함수에는 반환된 scoped <code>ctx</code>를 넘깁니다. 이 Context는 부모 path와 exclude를 보존하며, 조회를 위해 module을 다시 import하거나 manifest를 읽지 않습니다.
+</p>
+<h2 id="계약과-export-구조" tabindex="-1">계약과 export 구조 <a class="header-anchor" href="#계약과-export-구조" aria-label="Permalink to &quot;계약과 export 구조&quot;">​</a>
+</h2>
+<p>provide 이름은 선택할 Context를 결정합니다. named export 형태와 동작 규칙은 소비자가 요구하는 인터페이스로 정합니다. 현재 런타임의 계약 매칭을 export 멤버 구조의 자동 검증으로 해석하지 마세요.
+</p>
+<p>실제 render 함수명은 소비 계약마다 다릅니다. 위 <code>renderMenuRegion</code>을 모든 모듈의 공통 메서드로 가정하지 않습니다.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="cli.html"><small>이전 문서</small><span>CLI 명령어</span></a><a href="api.html"><small>다음 문서</small><span>공개 조회 API</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#define">define ​</a><a href="#포함-모듈-접근">포함 모듈 접근 ​</a><a href="#계약과-export-구조">계약과 export 구조 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

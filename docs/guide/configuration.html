@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인스턴스와 설정 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/configuration.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html">제외와 교체</a><a href="contracts.html">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html" aria-current="page">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html">검증과 문제 해결</a><a href="tools.html">CLI와 GUI</a><a href="ui-contracts.html">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="인스턴스와-설정" tabindex="-1">인스턴스와 설정 <a class="header-anchor" href="#인스턴스와-설정" aria-label="Permalink to &quot;인스턴스와 설정&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/spec/20-module-prop.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>모듈의 기본 설정은 <code>prop</code>, 사용하는 위치의 변경은 <code>config</code>로 표현합니다. 설정을 바꿔도 expect 충족 규칙은 바뀌지 않습니다.
+</p>
+<h2 id="기본값과-사용처-값" tabindex="-1">기본값과 사용처 값 <a class="header-anchor" href="#기본값과-사용처-값" aria-label="Permalink to &quot;기본값과 사용처 값&quot;">​</a>
+</h2>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;kind&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;ui_module&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;family&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;provide&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;ui&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;view.title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] },</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;prop&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;text&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;제목&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;visible&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;include&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{ </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;pkg&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;@shop/title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;alias&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;header_title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> }],</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;config&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{ </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;path&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;header_title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;prop&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;text&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;관리자&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> } }]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<p>기본 모듈은 유지하고, 사용하는 scope의 prop만 변경합니다. 기본값 → 가까운 번들 → 상위 엔트리 설정 순으로 적용합니다.
+</p>
+<h2 id="config-선택자" tabindex="-1">config 선택자 <a class="header-anchor" href="#config-선택자" aria-label="Permalink to &quot;config 선택자&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>선택자
+</th>
+<th>처리
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>header</code>
+</td>
+<td>해당 위치의 값을 덮어쓰기
+</td>
+</tr>
+<tr>
+<td><code>*header</code>
+</td>
+<td>기존 값을 유지하며 병합
+</td>
+</tr>
+<tr>
+<td><code>header+</code>
+</td>
+<td>해당 위치와 모든 하위에 적용
+</td>
+</tr>
+<tr>
+<td><code>header-</code>
+</td>
+<td>같은 config 항목의 적용 범위에서 제외
+</td>
+</tr>
+</tbody>
+</table>
+<p>config의 path 배열은 <strong>각각 독립된 전체 경로</strong>입니다. include.path의 segment 배열과 혼동하지 마세요.
+</p>
+<h2 id="static과-instance" tabindex="-1">static과 instance <a class="header-anchor" href="#static과-instance" aria-label="Permalink to &quot;static과 instance&quot;">​</a>
+</h2>
+<p>static 모듈은 공유 Context로 동작하고, instance 모듈은 실제 Context별 상태와 식별을 구분합니다. alias는 사용처 경로, instanceId는 물리 식별에 사용됩니다.
+</p>
+<p>GUI는 static 카드와 instance별 사용처를 구분해 표시합니다. 복제는 원본의 DB 데이터나 동적 추가 결과를 자동 복사하지 않습니다. 실제 인스턴스 동작은 원본 규격과 소비 환경에서 확인하세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="policies.html"><small>이전 문서</small><span>허용·거부와 링크</span></a><a href="schema.html"><small>다음 문서</small><span>DB 스키마</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#기본값과-사용처-값">기본값과 사용처 값 ​</a><a href="#config-선택자">config 선택자 ​</a><a href="#static과-instance">static과 instance ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

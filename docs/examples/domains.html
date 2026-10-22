@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>쇼핑몰·ERP 탐색 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/examples/domains.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="index.html" aria-current="page">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>예제
+</h2>
+<nav aria-label="예제 문서"><a href="index.html">예제 안내</a><a href="basic.html">기본 조립</a><a href="blog.html">블로그 조립</a><a href="domains.html" aria-current="page">쇼핑몰·ERP 탐색</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="쇼핑몰·erp-카탈로그-탐색" tabindex="-1">쇼핑몰·ERP 카탈로그 탐색 <a class="header-anchor" href="#쇼핑몰·erp-카탈로그-탐색" aria-label="Permalink to &quot;쇼핑몰·ERP 카탈로그 탐색&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-server/ghost/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>Ghost의 쇼핑몰과 ERP 데이터는 검색·조립 탐색을 위한 메타데이터 시나리오입니다. 결제·재고·전표 등의 실제 업무 구현을 제공하지 않습니다.
+</p>
+<h2 id="쇼핑몰" tabindex="-1">쇼핑몰 <a class="header-anchor" href="#쇼핑몰" aria-label="Permalink to &quot;쇼핑몰&quot;">​</a>
+</h2>
+<p><a href="../catalog/index.html?domain=commerce">커머스 모듈 보기</a>
+</p>
+<p>상품·주문·결제·재고의 DB 모듈과 storefront·checkout UI를 비교하세요. 주문 DB를 더하면 채워야 할 결제·재고 계약이 함께 늘어날 수 있습니다.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> search</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --kind</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> db_module</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --expect</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> api:commerce.payment.authorize</span></span></code></pre>
+</div>
+<h2 id="erp" tabindex="-1">ERP <a class="header-anchor" href="#erp" aria-label="Permalink to &quot;ERP&quot;">​</a>
+</h2>
+<p><a href="../catalog/index.html?domain=erp">ERP 모듈 보기</a>
+</p>
+<p>영업·재무 구성과 K-GAAP/IFRS 대안을 살펴봅니다. 서로 배타적인 조합과 다음 추천 모듈을 구분합니다.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> search</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --kind</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ui_module</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --provide</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> api:erp.finance.posting</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> recommend</span></span></code></pre>
+</div>
+<h2 id="확인할-질문" tabindex="-1">확인할 질문 <a class="header-anchor" href="#확인할-질문" aria-label="Permalink to &quot;확인할 질문&quot;">​</a>
+</h2>
+<ol>
+<li>모듈을 선택할 때 새로 생기는 요구는 무엇인가요?
+</li>
+<li>DB 소유권과 UI 제공 책임은 어디에 있나요?
+</li>
+<li>대안 구현을 바꿔도 실제 export 구조와 의미가 유지되나요?
+</li>
+<li>등록 선언과 사용처의 exclude·reject를 반영한 결과는 어떻게 다른가요?
+</li>
+</ol>
+<p><a href="../contracts/index.html">계약 집계</a>와 <a href="../contracts/providers/index.html">제공 선언 후보</a>를 오가며 필요한 조각을 찾아보세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="blog.html"><small>이전 문서</small><span>블로그 조립</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#쇼핑몰">쇼핑몰 ​</a><a href="#erp">ERP ​</a><a href="#확인할-질문">확인할 질문 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

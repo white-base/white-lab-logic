@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { filterPackages, filterPatterns, filterProviders, filterContracts, packageLink, patternLink, usageLink, paginate } from '../docs/.vitepress/theme/lib/catalog.mjs';
+import { filterPackages, filterPatterns, filterProviders, filterContracts, packageLink, patternLink, usageLink, paginate } from '../docs/assets/js/catalog.mjs';
+import { searchDocuments, escapeHTML } from '../docs/assets/js/shared.mjs';
 import { validateSnapshot } from '../scripts/validate-data.mjs';
-const read = async (file) => JSON.parse(await readFile(new URL(`../docs/public/data/${file}.json`, import.meta.url), 'utf8')).items;
+const read = async (file) => JSON.parse(await readFile(new URL(`../docs/data/${file}.json`, import.meta.url), 'utf8')).items;
 const [packages, contracts, patterns, providers] = await Promise.all(['packages', 'contracts', 'patterns', 'providers'].map(read));
 
 test('snapshot references, exact owner keys and counts agree with collected API declarations', async () => {
@@ -51,4 +52,15 @@ test('invalid and out-of-range pages cannot silently masquerade as another page'
   assert.equal(paginate(packages, 999).items.length, 0);
   const first = paginate(packages, 1), second = paginate(packages, 2);
   assert.ok(first.items.every((p) => !second.items.includes(p)));
+});
+
+test('static document search finds Korean headings and commands without indexing planning files', async () => {
+  const items = await read('search-index');
+  assert.ok(searchDocuments(items, '교체').some((item) => item.path === '/guide/replacement.html'));
+  assert.ok(searchDocuments(items, 'logic validate').some((item) => item.path === '/guide/validation.html'));
+  assert.ok(items.every((item) => item.path.endsWith('.html') && !item.path.includes('site-plan')));
+  assert.equal(searchDocuments(items, '不存在的完全없는문자987654321').length, 0);
+});
+test('HTML rendering escapes package metadata and user-entered markup', () => {
+  assert.equal(escapeHTML('<img src=x onerror="alert(1)"> & \'quoted\''), '&lt;img src=x onerror=&quot;alert(1)&quot;&gt; &amp; &#39;quoted&#39;');
 });

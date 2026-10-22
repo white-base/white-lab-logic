@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI 계약 설계 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/ui-contracts.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html">제외와 교체</a><a href="contracts.html">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html">검증과 문제 해결</a><a href="tools.html">CLI와 GUI</a><a href="ui-contracts.html" aria-current="page">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="ui-계약-설계" tabindex="-1">UI 계약 설계 <a class="header-anchor" href="#ui-계약-설계" aria-label="Permalink to &quot;UI 계약 설계&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/design/30-ui-public-export-expect-plan.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>UI 계약은 소비자가 실제로 쓰는 public export 구조에서 시작합니다. 이름이 비슷하다는 이유만으로 인터페이스가 호환된다고 판단하지 않습니다.
+</p>
+<h2 id="설계-순서" tabindex="-1">설계 순서 <a class="header-anchor" href="#설계-순서" aria-label="Permalink to &quot;설계 순서&quot;">​</a>
+</h2>
+<ol>
+<li>소비자가 필요한 함수·객체·팩터리와 실행 환경을 정합니다.
+</li>
+<li>기존 public export 규칙과 base expect 조합을 대조합니다.
+</li>
+<li><a href="../contracts/patterns/index.html">UI 패턴 검색</a>으로 유사한 선언을 찾습니다.
+</li>
+<li>동일 버전의 실제 export 경로와 소비 코드를 확인합니다.
+</li>
+<li>적합·부분 재사용·부적합·근거 미확인을 구분해 기록합니다.
+</li>
+<li>맞는 규칙이 없으면 필요한 조합이나 규칙을 직접 정의합니다.
+</li>
+</ol>
+<h2 id="세-가지-정보를-구별하세요" tabindex="-1">세 가지 정보를 구별하세요 <a class="header-anchor" href="#세-가지-정보를-구별하세요" aria-label="Permalink to &quot;세 가지 정보를 구별하세요&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>구분
+</th>
+<th>기록할 정보
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public export 규칙
+</td>
+<td>구조·멤버·입력/반환·동작·환경·생명주기
+</td>
+</tr>
+<tr>
+<td>base expect
+</td>
+<td>목적과 규칙 조합·사용 시점·제공 단위
+</td>
+</tr>
+<tr>
+<td>실제 계약
+</td>
+<td>토큰·scope·owner·수량·패키지/버전·export 경로
+</td>
+</tr>
+</tbody>
+</table>
+<p>객체의 두 멤버가 같은 제공자에서 나와야 하는지, 상태를 어디에서 생성하고 종료하는지도 명시합니다. 웹 SSR과 RN의 반환 타입을 같은 것으로 취급하지 않습니다.
+</p>
+<h2 id="현재-검색의-범위" tabindex="-1">현재 검색의 범위 <a class="header-anchor" href="#현재-검색의-범위" aria-label="Permalink to &quot;현재 검색의 범위&quot;">​</a>
+</h2>
+<p>카탈로그는 계약 이름·설명·선언 사례를 검색합니다. 서버는 public export 구조나 base expect 조합을 구조적으로 검색하지 않으며, 런타임도 named export 멤버 형태를 자동 검증하지 않습니다.
+</p>
+<p>DB 계열의 expect와 UI public export 규칙은 각 소비 목적에 맞게 관리합니다. <code>api:</code> 접두사만으로 DB/UI 분류를 결정하지 않습니다.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="tools.html"><small>이전 문서</small><span>CLI와 GUI</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#설계-순서">설계 순서 ​</a><a href="#세-가지-정보를-구별하세요">세 가지 정보를 구별하세요 ​</a><a href="#현재-검색의-범위">현재 검색의 범위 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

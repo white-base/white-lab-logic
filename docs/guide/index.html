@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>조립 흐름 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html" aria-current="page">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html">제외와 교체</a><a href="contracts.html">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html">검증과 문제 해결</a><a href="tools.html">CLI와 GUI</a><a href="ui-contracts.html">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="조립-가이드" tabindex="-1">조립 가이드 <a class="header-anchor" href="#조립-가이드" aria-label="Permalink to &quot;조립 가이드&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/spec/10-assembly-rules.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>조립은 <strong>모듈 선택 → 관계 선언 → 계약 확인 → 검증</strong>의 순서로 진행합니다. 먼저 데이터 책임과 교체할 UI 책임을 구분하세요.
+</p>
+<h2 id="기본-흐름" tabindex="-1">기본 흐름 <a class="header-anchor" href="#기본-흐름" aria-label="Permalink to &quot;기본 흐름&quot;">​</a>
+</h2>
+<ol>
+<li><a href="../catalog/index.html">모듈 조회</a>에서 DB/UI 모듈·번들을 찾습니다.
+</li>
+<li>빠지면 조립이 깨지는 관계는 <a href="dependencies.html">depend</a>로 선언합니다.
+</li>
+<li>선택하거나 교체할 조합은 <code>include</code>로 선언합니다.
+</li>
+<li><a href="contracts.html">expect/provide 계약</a>의 scope·owner·수량을 확인합니다.
+</li>
+<li><code>logic validate</code>와 <code>logic check</code>로 선언·조립 결과를 나눠 검사합니다.
+</li>
+<li><code>logic tree --contract</code> 또는 <code>logic gui</code>로 관계를 살펴봅니다.
+</li>
+</ol>
+<h2 id="작업별-안내" tabindex="-1">작업별 안내 <a class="header-anchor" href="#작업별-안내" aria-label="Permalink to &quot;작업별 안내&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>작업
+</th>
+<th>안내
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>모듈을 묶기
+</td>
+<td><a href="./dependencies.html">의존과 포함</a>
+</td>
+</tr>
+<tr>
+<td>하위 UI를 제외·교체
+</td>
+<td><a href="./replacement.html">제외와 교체</a>
+</td>
+</tr>
+<tr>
+<td>요구·제공을 연결
+</td>
+<td><a href="./contracts.html">계약 연결</a>
+</td>
+</tr>
+<tr>
+<td>제공 후보 제어와 별칭
+</td>
+<td><a href="./policies.html">허용·거부와 링크</a>
+</td>
+</tr>
+<tr>
+<td>인스턴스·사용처 설정
+</td>
+<td><a href="./configuration.html">인스턴스와 설정</a>
+</td>
+</tr>
+<tr>
+<td>DB 관계와 변경 계획
+</td>
+<td><a href="./schema.html">DB 스키마</a>
+</td>
+</tr>
+<tr>
+<td>오류 확인
+</td>
+<td><a href="./validation.html">검증과 문제 해결</a>
+</td>
+</tr>
+<tr>
+<td>화면에서 작업
+</td>
+<td><a href="./tools.html">CLI와 GUI</a>
+</td>
+</tr>
+<tr>
+<td>새로운 UI 계약 설계
+</td>
+<td><a href="./ui-contracts.html">UI 계약 설계</a>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="카탈로그와-로컬-결과" tabindex="-1">카탈로그와 로컬 결과 <a class="header-anchor" href="#카탈로그와-로컬-결과" aria-label="Permalink to &quot;카탈로그와 로컬 결과&quot;">​</a>
+</h2>
+<p>카탈로그는 등록된 선언과 정적 의존 정보를 제공합니다. 사용처별 exclude·교체·동적 setup이 반영된 실효 결과는 로컬 조립에서 확인합니다. 같은 계약 이름이 검색되어도 연결 성공을 뜻하지 않습니다.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="dependencies.html"><small>다음 문서</small><span>의존과 포함</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#기본-흐름">기본 흐름 ​</a><a href="#작업별-안내">작업별 안내 ​</a><a href="#카탈로그와-로컬-결과">카탈로그와 로컬 결과 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

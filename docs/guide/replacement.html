@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>제외와 교체 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/replacement.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html" aria-current="page">제외와 교체</a><a href="contracts.html">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html">검증과 문제 해결</a><a href="tools.html">CLI와 GUI</a><a href="ui-contracts.html">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="제외와-교체" tabindex="-1">제외와 교체 <a class="header-anchor" href="#제외와-교체" aria-label="Permalink to &quot;제외와 교체&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/spec/10-assembly-rules.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>하위 번들의 원본을 수정하지 않고 엔트리에서 include 경로를 제어할 수 있습니다. 경로는 패키지 이름이 아닌 <strong>Context key를 <code>/</code>로 연결한 전체 경로</strong>입니다.
+</p>
+<h2 id="선택-조합-제외" tabindex="-1">선택 조합 제외 <a class="header-anchor" href="#선택-조합-제외" aria-label="Permalink to &quot;선택 조합 제외&quot;">​</a>
+</h2>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;exclude&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;site/comments&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;site/data/comments&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<p>예시는 블로그의 댓글 UI와 대응 DB 경로를 함께 제외합니다. UI만 제거해 계약 요구가 남는 경우에는 조립 검사가 실패할 수 있습니다. 이미 존재하는 DB 테이블을 삭제하는 동작은 아닙니다.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exclude</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --path</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> site/comments</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> exclude</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --path</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> site/comments</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --remove</span></span></code></pre>
+</div>
+<h2 id="같은-자리에-교체" tabindex="-1">같은 자리에 교체 <a class="header-anchor" href="#같은-자리에-교체" aria-label="Permalink to &quot;같은 자리에 교체&quot;">​</a>
+</h2>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;include&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;pkg&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;@blog/ui-blog&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;alias&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;site&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;pkg&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;@blog/ui-comments-compact&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;path&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;site/comments&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  ]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<p>기존 include 경로를 지정하면 해당 자리를 교체합니다. 별도 exclude는 필요하지 않습니다. 빈 경로 자리를 지정하면 새 include를 추가합니다. depend로 연결된 자리는 교체할 수 없습니다.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> include</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">replacement-packag</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --path</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> site/comments</span></span></code></pre>
+</div>
+<h2 id="바꾸기-전-확인" tabindex="-1">바꾸기 전 확인 <a class="header-anchor" href="#바꾸기-전-확인" aria-label="Permalink to &quot;바꾸기 전 확인&quot;">​</a>
+</h2>
+<ul>
+<li>기존 소비자가 요구하는 계약과 새 모듈의 제공 선언을 대조합니다.
+</li>
+<li>실제 export 구조와 실행 환경이 맞는지 확인합니다.
+</li>
+<li>교체 후 <code>logic validate</code>, <code>logic check</code>, <code>logic tree --contract</code>로 결과를 확인합니다.
+</li>
+</ul>
+<p>실제 시연: <a href="../examples/blog.html">블로그 조립 예제</a>
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="dependencies.html"><small>이전 문서</small><span>의존과 포함</span></a><a href="contracts.html"><small>다음 문서</small><span>계약 연결</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#선택-조합-제외">선택 조합 제외 ​</a><a href="#같은-자리에-교체">같은 자리에 교체 ​</a><a href="#바꾸기-전-확인">바꾸기 전 확인 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

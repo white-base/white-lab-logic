@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>logic.json · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/reference/manifest.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="index.html" aria-current="page">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>레퍼런스
+</h2>
+<nav aria-label="레퍼런스 문서"><a href="index.html">전체 보기</a><a href="manifest.html" aria-current="page">logic.json</a><a href="contracts.html">계약 문자열</a><a href="cli.html">CLI 명령어</a><a href="runtime.html">런타임 API</a><a href="api.html">공개 조회 API</a><a href="diagnostics.html">오류와 버전</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="logic-json" tabindex="-1">logic.json <a class="header-anchor" href="#logic-json" aria-label="Permalink to &quot;logic.json&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/spec/logic-json-schema-reference.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p><code>logic.json</code>은 패키지의 조립 방식을 선언합니다. <code>package.json</code>이 필수이며 패키지 이름·버전의 단일 원본입니다.
+</p>
+<h2 id="주요-필드" tabindex="-1">주요 필드 <a class="header-anchor" href="#주요-필드" aria-label="Permalink to &quot;주요 필드&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>필드
+</th>
+<th>의미
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>engine</code>
+</td>
+<td>Manifest 형식·조립 규칙 버전
+</td>
+</tr>
+<tr>
+<td><code>kind</code>
+</td>
+<td>네 가지 모듈·번들 종류
+</td>
+</tr>
+<tr>
+<td><code>family</code>, <code>namespace</code>
+</td>
+<td>모듈 계열·그룹 분류
+</td>
+</tr>
+<tr>
+<td><code>depend.db</code>, <code>depend.ui</code>
+</td>
+<td>DB/UI 강한 의존
+</td>
+</tr>
+<tr>
+<td><code>include</code>
+</td>
+<td>번들의 선택 조합
+</td>
+</tr>
+<tr>
+<td><code>exclude</code>
+</td>
+<td>제외할 include의 전체 경로
+</td>
+</tr>
+<tr>
+<td><code>expect</code>
+</td>
+<td>flat 요구 계약 배열
+</td>
+</tr>
+<tr>
+<td><code>provide.ui</code>, <code>provide.db</code>
+</td>
+<td>UI 계열의 제공·재제공
+</td>
+</tr>
+<tr>
+<td><code>reject</code>, <code>accept</code>
+</td>
+<td>경로별 제공 후보 정책
+</td>
+</tr>
+<tr>
+<td><code>link</code>
+</td>
+<td>기존 하위 Context 경로의 별칭
+</td>
+</tr>
+<tr>
+<td><code>instance</code>
+</td>
+<td>인스턴스 모듈 선언
+</td>
+</tr>
+<tr>
+<td><code>prop</code>, <code>propSchema</code>, <code>config</code>
+</td>
+<td>기본 설정·검증·사용처 변경
+</td>
+</tr>
+<tr>
+<td><code>schema</code>
+</td>
+<td>DB 관계·확장·참조·명명 설정
+</td>
+</tr>
+<tr>
+<td><code>mutex</code>, <code>recommend</code>
+</td>
+<td>상호 배타·추천 선택자
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="패키지-참조" tabindex="-1">패키지 참조 <a class="header-anchor" href="#패키지-참조" aria-label="Permalink to &quot;패키지 참조&quot;">​</a>
+</h2>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;engine&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;1.0.0&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;kind&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;ui_bundle&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;family&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;example.app&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;depend&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;db&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;@scope/data&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] },</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;include&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{ </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;pkg&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;@scope/view&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;alias&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;view&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> }]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<p>객체형 참조의 패키지 키는 <code>pkg</code>입니다. 과거 <code>name</code> 표기는 읽기 호환용이며 새로 작성하지 않습니다.
+</p>
+<p><code>schema</code>는 DB 구조 선언입니다. manifest 형식 버전을 뜻하던 옛 필드명과 혼동하지 말고 버전은 <code>engine</code>에 기록하세요.
+</p>
+<p>상세 규격은 원본 문서와 <a href="../guide/dependencies.html">조립 kind 표</a>, <a href="./contracts.html">계약 문법</a>, <a href="../guide/configuration.html">사용처 설정</a>을 함께 확인하세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="index.html"><small>이전 문서</small><span>전체 보기</span></a><a href="contracts.html"><small>다음 문서</small><span>계약 문자열</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#주요-필드">주요 필드 ​</a><a href="#패키지-참조">패키지 참조 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

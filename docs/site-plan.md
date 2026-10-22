@@ -1,12 +1,14 @@
 # Logic 문서·조회 사이트 구성계획서
 
-> **상태**: 1차 구현·Pages 배포 완료 · DNS 연결 대기
-> **버전**: 0.4
+> **상태**: 정적 HTML 방식으로 전환 중
+> **버전**: 0.5
 > **최종수정**: 2026-10-22
 > **대상 도메인**: `logic.bindmodel.com`
 > **사이트 저장소**: `white-base/white-lab-logic`
 
 ## 1. 목적과 작업 범위
+
+**현재 적용 방침(2026-10-22)**: 사용자의 후속 요청에 따라 VitePress 빌드 방식을 정적 HTML·CSS·JavaScript 방식으로 전환한다. `docs/index.html`을 실제 진입 파일로 관리하고 GitHub Pages는 `main` 브랜치의 `/docs`를 직접 게시한다. 아래의 VitePress 관련 설명은 1차 구현 당시의 설계·기록이며 현재 전환 계획은 §16을 우선 적용한다.
 
 Logic의 DB/UI 모듈과 번들을 이해하고, 조립 방법을 학습하며, 사용할 모듈과 계약을 찾는 공개 사이트를 만든다. 문서 원고와 조회 화면의 콘텐츠는 이 저장소의 `/docs`를 기준으로 관리한다.
 
@@ -190,49 +192,50 @@ CI 빌드는 저장소에 포함된 스냅샷만으로 재현 가능하게 한�
 
 ## 8. `/docs` 중심 파일 구조
 
-아래 구조를 기준으로 1차 사이트를 구현한다. 실제 구현 결과와 초기 데이터 파일 구성은 §15에 기록한다.
+사용자의 HTML 방식 요청에 따라 다음 파일을 직접 관리한다. `/docs`가 게시 소스이며 `docs/index.html`이 실제 홈이다.
 
 ```text
 white-lab-logic/
-├── README.md                        # 저장소와 계획서 안내
-├── package.json                     # 후속: 문서 개발·빌드·검증 명령
-├── scripts/                         # 후속: 데이터 추출·검증 도구
-├── .github/workflows/pages.yml      # 후속: Pages 빌드·배포
+├── README.md
+├── package.json                       # 선택적인 로컬 실행·검증 명령
+├── scripts/                           # 미리보기·검증·데이터/검색 인덱스 갱신
+├── tests/
+├── .github/workflows/check.yml        # 소스 검증만 수행
 └── docs/
-    ├── README.md                    # 작성자용 문서 안내
-    ├── site-plan.md                 # 이 구성계획서
-    ├── index.md                     # 홈
-    ├── start/                       # 시작하기
-    ├── guide/                       # 조립 가이드
-    ├── reference/                   # 규격·CLI·API·오류
-    ├── catalog/
-    │   ├── index.md                 # 모듈 검색
-    │   └── package/index.md         # 쿼리 기반 상세
-    ├── contracts/
-    │   ├── index.md                 # expect 집계
-    │   ├── usage/index.md           # 정확 계약 사용 사례
-    │   ├── providers/index.md       # 제공 선언 후보
-    │   ├── patterns/index.md        # UI 기능 패턴 검색
-    │   └── pattern/index.md         # 패턴 선언 사례
-    ├── examples/                    # 조립 예제
-    ├── public/
-    │   ├── images/
-    │   └── data/
-    │       ├── meta.json            # 출처·기준일·스키마·수집 범위
-    │       ├── packages.json        # 검색 인덱스
-    │       ├── packages/            # 패키지·버전별 상세
-    │       ├── contracts.json       # 정확 계약 집계·사용 사례
-    │       └── patterns.json        # UI 패턴·선언 사례
-    └── .vitepress/
-        ├── config.mts              # 메뉴·사이드바·문서 검색
-        └── theme/                  # 모듈·계약 조회 컴포넌트
+    ├── index.html                    # 실제 홈
+    ├── start/                        # 시작하기 HTML
+    ├── guide/                        # 조립 가이드 HTML
+    ├── reference/                    # 레퍼런스 HTML
+    ├── examples/                     # 조립 예제 HTML
+    ├── catalog/                      # 모듈 검색·상세 HTML
+    ├── contracts/                    # 계약·패턴 검색·사례 HTML
+    ├── assets/
+    │   ├── site.css                  # 공통 디자인
+    │   ├── logo.svg
+    │   ├── favicon.svg
+    │   └── js/
+    │       ├── site.js               # 메뉴·테마·문서 검색
+    │       ├── explorer.js           # 조회 화면
+    │       ├── catalog.mjs           # 검색·URL·페이지 로직
+    │       └── shared.mjs            # 공통 데이터 로딩·문자열 처리
+    ├── data/
+    │   ├── meta.json
+    │   ├── packages.json
+    │   ├── contracts.json
+    │   ├── patterns.json
+    │   ├── providers.json
+    │   └── search-index.json
+    ├── CNAME
+    ├── .nojekyll
+    ├── sitemap.xml
+    ├── 404.html
+    ├── README.md                     # 작성자 안내
+    └── site-plan.md                  # 이 계획서
 ```
 
-정적 생성기는 **VitePress를 권장안**으로 둔다. Markdown 문서와 Vue 조회 컴포넌트를 함께 관리하고, 본문 검색에는 로컬 검색을 사용할 수 있다. 구현 시 안정 버전을 확인해 잠금 파일로 고정한다. [VitePress 검색 문서](https://vitepress.dev/reference/default-theme-search)
+프런트엔드 프레임워크 설치와 컴파일은 필요하지 않다. 문서 본문과 홈은 HTML 자체에 포함하며, 카탈로그와 문서 검색만 JavaScript와 JSON을 사용한다. 문서 HTML 수정 후 `node scripts/index-docs.mjs`로 검색 인덱스를 갱신한다.
 
-소스 폴더 `/docs`는 공개 URL의 `/docs/`를 뜻하지 않는다. 도메인 루트에 홈을 게시한다. 카탈로그 상세는 실제 생성된 `index.html`과 쿼리 문자열을 사용해 직접 접속·새로고침을 지원하고, 존재하지 않는 SPA 경로에 의존하지 않는다. [VitePress 라우팅](https://vitepress.dev/guide/routing)
-
-`docs/README.md`와 `docs/site-plan.md`는 작성자용으로 관리하고 후속 빌드의 페이지·검색 대상에서 제외한다. 생성되는 `.vitepress/dist`·캐시는 Git 관리 대상에서 제외한다.
+`/docs`는 소스 폴더명이며 공개 도메인의 `/docs/` 접두사를 뜻하지 않는다. 각 경로의 `index.html`과 상대 링크를 사용하므로 도메인 루트와 로컬 HTTP 서버에서 직접 접속·새로고침할 수 있다. 계획서·작성자 README는 사이트 메뉴·문서 검색에서 제외한다.
 
 ## 9. 원고와 규격 관리
 
@@ -246,31 +249,29 @@ white-lab-logic/
 
 ## 10. GitHub Pages·도메인 계획
 
-권장 배포는 **`/docs`를 소스로 빌드하고 GitHub Actions에서 산출물을 Pages로 배포**하는 방식이다. 저장소 설정은 `Build and deployment → Source: GitHub Actions`를 사용한다. 브랜치의 `/docs`를 그대로 게시하는 방식은 이번 권장안과 구별한다. [GitHub 게시 소스 설정](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+**`main` 브랜치의 `/docs`를 직접 게시**한다. Pages의 `Build and deployment → Source`는 `Deploy from a branch`, Branch는 `main`, Folder는 `/docs`로 설정한다. [GitHub 게시 소스 설정](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
-| 항목 | 계획 |
+| 항목 | 현재 방식 |
 |---|---|
-| 빌드 입력 | `/docs`의 Markdown·조회 컴포넌트·공개 데이터 |
-| 빌드 출력 | `docs/.vitepress/dist` |
-| 기본 경로 | 커스텀 도메인 게시 시 `/` |
-| 검증 | PR에서 문서 빌드·링크·JSON 구조 확인, 로컬 미리보기 |
-| 배포 | 기본 브랜치 반영 또는 수동 실행 후 Pages artifact 배포 |
-| 실패 처리 | 검증 실패 시 배포 중단, 마지막 정상 배포 유지 |
+| 진입 파일 | `docs/index.html` |
+| 게시 파일 | `/docs`의 HTML·CSS·JavaScript·JSON·정적 자산 |
+| 전처리 | `docs/.nojekyll`로 정적 파일 제공 |
+| 게시 | main 반영 시 Pages의 기본 게시 작업 실행 |
+| 별도 CI | `check.yml`이 테스트·데이터·HTML 링크 검사만 수행 |
+| 도메인 | `docs/CNAME`과 Pages 설정의 `logic.bindmodel.com` |
 
-이 구조와 출력 경로는 [VitePress 배포 안내](https://vitepress.dev/guide/deploy)를 기준으로 한다. 실제 저장소의 기본 브랜치와 Pages 권한은 구현 시 확인한다.
+가비아 DNS의 `logic` CNAME은 `white-base.github.io`를 가리키도록 한다. DNS 값에 저장소 경로를 붙이지 않는다. DNS 확인과 인증서 발급이 완료되면 Enforce HTTPS를 적용한다. [GitHub 커스텀 도메인 설정](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 
-도메인은 Pages의 Custom domain에 `logic.bindmodel.com`을 설정하고, DNS의 `logic` CNAME을 저장소 소유 조직 기준 `white-base.github.io`로 연결하는 안이다. DNS 값에 저장소 경로를 붙이지 않는다. 연결 확인 후 HTTPS를 적용한다. Actions 방식에서는 저장소의 `CNAME` 파일만으로 도메인이 설정되지 않으며 해당 파일도 필수가 아니다. [GitHub 커스텀 도메인 설정](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
-
-현재 Pages 설정·DNS·HTTPS 상태는 미확인이다. 이 계획서는 연결 구성을 제시하며 연결 완료를 의미하지 않는다.
+기존 VitePress artifact 배포 workflow는 제거하고 GitHub Pages의 브랜치 게시로 대체한다. 실제 전환 결과와 도메인 상태는 §16에 기록한다.
 
 ## 11. 단계별 진행 계획과 완료 기준
 
 | 단계 | 작업 | 완료 기준 |
 |---|---|---|
 | 0. 구성계획 | 이 문서를 먼저 작성하고 원본 확인 결과 보완 | 메뉴·URL·데이터 범위·출처·배포안·후속 범위 기록 |
-| 1. 문서 기반 | VitePress 구성, 홈·사이드바·문서 검색, 시작하기와 핵심 가이드 | 로컬 빌드 성공, 주요 문서 이동·검색·모바일 탐색 가능 |
+| 1. 문서 기반 | 정적 HTML 홈·사이드바·문서 검색, 시작하기와 핵심 가이드 | HTML 직접 제공, 주요 문서 이동·검색·모바일 탐색 가능 |
 | 2. 정적 조회 | 데이터 추출·검증, 모듈/계약/패턴 검색·상세 | 서버 없이 검색·상세·버전 공유 가능, 기준일·샘플 표시 |
-| 3. 예제와 배포 | 기본·블로그 예제, Pages workflow, 도메인 연결 | 직접 URL 접속·새로고침·HTTPS·404·모바일 확인 |
+| 3. 예제와 배포 | 기본·블로그 예제, main /docs 직접 게시, 도메인 연결 | 직접 URL 접속·새로고침·HTTPS·404·모바일 확인 |
 | 4. API 연계 | 운영 API·CORS 구성, 실시간 검색 어댑터 | 성공/빈 결과/오류 처리, 검색 조건·페이지 일관성 검증 |
 | 5. 후속 확장 | 관계 그래프, 예제 확대, public export 구조 조회 검토 | 근거 데이터와 필요한 서버 기능을 갖춘 항목부터 공개 |
 
@@ -290,7 +291,7 @@ white-lab-logic/
 | 항목 | 초안 기본값 | 확인 시점 |
 |---|---|---|
 | 서비스 명칭·언어 | Logic / 한글 중심, 코드 용어 병기 | 홈 원고·디자인 작성 시 |
-| 생성기 | VitePress 안정 버전 | 기반 구성 시 |
+| 사이트 형식 | 정적 HTML·CSS·JavaScript | 사용자 요청에 따라 전환 |
 | 첫 카탈로그 | Ghost/fixture의 공개 가능한 샘플 | 스냅샷 제작 시 |
 | 실제 패키지 포함 | 공개 범위·배포 상태를 확인한 패키지만 | 실데이터 갱신 시 |
 | API 운영 주소 | 미지정, 1차는 정적 데이터 | API 연계 착수 시 |
@@ -325,7 +326,7 @@ white-lab-logic/
 - [x] 작성자용 안내와 저장소 README 연결.
 - [x] 사이트 화면·데이터 추출·빌드·Pages 배포 구현.
 
-## 15. 1차 구현 작업 계획과 진행
+## 15. 1차 VitePress 구현 기록 (HTML 전환 전)
 
 GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Sites 호스팅 프로젝트는 생성하지 않는다.
 
@@ -368,3 +369,29 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - 최종 Action 구성의 원격 검증도 성공했다: [최종 Pages 배포](https://github.com/white-base/white-lab-logic/actions/runs/39751655716), 사이트 코드 커밋 `43d4e0a`, build/deploy 전체 46초.
 - 데이터 생성 도구를 격리된 임시 출력 위치에서 두 번 실행해 최초 생성과 기존 스냅샷 교체를 모두 확인했다. 원본 저장소와 사이트의 공개 데이터 파일은 이 검증에서 변경하지 않았다.
 - 최종 확인 시 가비아 권한 네임서버는 `logic.bindmodel.com`에 NXDOMAIN을 반환했다. 따라서 사용자 CNAME 추가 이후 실제 도메인 접속과 HTTPS 인증서·강제 설정 확인이 남아 있다. Pages 배포 성공을 DNS 연결 완료로 취급하지 않는다.
+
+## 16. 정적 HTML 전환 계획
+
+사용자가 `docs/index.html`이 있는 HTML 방식을 요청했다. 기존 문서와 카탈로그 데이터·기능을 유지하며 게시 소스를 단순화한다.
+
+- [x] 구현 전에 전환 계획을 이 Markdown 파일에 작성.
+- [x] `docs/index.html`과 문서·조회 경로의 HTML 파일을 직접 관리.
+- [x] 공통 CSS·JavaScript와 JSON 데이터를 `/docs` 안에 배치.
+- [x] 기존 문서 검색·모듈 검색·계약/패턴 조회·상세 기능을 순수 JavaScript로 전환.
+- [x] VitePress·Vue 의존성과 전용 빌드·배포 설정 제거.
+- [ ] `main /docs` 직접 게시와 `CNAME`·`.nojekyll` 구성.
+- [x] HTML 링크·데이터·검색 테스트 및 브라우저·모바일 검증.
+- [ ] 변경을 저장소와 GitHub Pages에 반영하고 결과 기록.
+
+문서 본문은 실제 HTML에 포함한다. 작성자용 계획서와 README는 Markdown으로 유지한다. 조회 서비스는 공개 JSON 스냅샷을 브라우저에서 읽으며, 업무 로직·실효 조립 판정의 지원 범위는 그대로 유지한다.
+
+### 16.1 구현 내용
+
+- HTML 파일 33개(홈·문서 24개·조회 7개·404)를 `/docs`에 직접 배치했다.
+- 문서·카탈로그 본문과 공통 탐색은 기존 내용을 유지했다. 데이터 디렉터리를 `docs/data`로 옮겼다.
+- 브라우저 검색·필터·상세·계약 사례·키보드 탭 이동을 순수 JavaScript로 전환했다.
+- VitePress·Vue 설정과 의존성, 기존 Pages artifact workflow를 제거했다. 소스 검증용 `check.yml`만 유지한다.
+- 테스트 8개, 데이터 무결성, HTML 640개 내부 링크·자산 경로, 문서 검색 인덱스 24개 검증을 통과했다.
+- Chrome에서 한글 모듈 필터, 상세 계약·의존 관계와 키보드 탭 이동, 정확 계약 사례, owner가 다른 UI 패턴 사례, 제공 후보 검색, 문서 검색·이동, 미수집 버전 안내를 확인했다.
+- 모바일 390px에서 문서·카탈로그의 가로 넘침이 없고 상단 메뉴·문서 사이드바가 동작함을 확인했다. 콘솔 오류·경고는 없었다.
+- 격리한 임시 출력 경로에서 데이터 생성·교체를 두 번 실행해 `docs/data` 출력과 문서 검색 인덱스 보존을 확인했다. 참조 저장소와 공개 스냅샷은 이 검증에서 수정하지 않았다.

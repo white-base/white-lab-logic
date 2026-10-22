@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLI와 GUI · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/tools.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html">제외와 교체</a><a href="contracts.html">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html">검증과 문제 해결</a><a href="tools.html" aria-current="page">CLI와 GUI</a><a href="ui-contracts.html">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="cli와-gui" tabindex="-1">CLI와 GUI <a class="header-anchor" href="#cli와-gui" aria-label="Permalink to &quot;CLI와 GUI&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-gui/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>CLI와 로컬 GUI는 같은 조립 프로젝트를 다루는 도구입니다. 웹 카탈로그는 패키지를 탐색하는 공개 조회 화면입니다.
+</p>
+<h2 id="cli의-기본-순서" tabindex="-1">CLI의 기본 순서 <a class="header-anchor" href="#cli의-기본-순서" aria-label="Permalink to &quot;CLI의 기본 순서&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> info</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> validate</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> check</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tree</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --contract</span></span></code></pre>
+</div>
+<p><code>logic search</code>와 <code>logic view</code>는 레지스트리에 질의합니다. 로컬 조립을 읽는 명령과 연결 대상을 구분하세요.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> search</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -s</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 블로그</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --kind</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ui</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> view</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @ghost/ui-blog-cms</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --versions</span></span></code></pre>
+</div>
+<p>Ghost 샘플은 원본 워크스페이스의 Ghost 레지스트리를 기동한 뒤 조회합니다.
+</p>
+<h2 id="gui-실행" tabindex="-1">GUI 실행 <a class="header-anchor" href="#gui-실행" aria-label="Permalink to &quot;GUI 실행&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> gui</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> gui</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --port</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5000</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --no-open</span></span></code></pre>
+</div>
+<p>현재 조립 루트를 로컬 서버로 엽니다. 기본 host는 loopback이며, 실행·저장에는 기동 시 생성한 세션 토큰을 사용합니다. 표시되는 토큰 URL은 해당 로컬 세션에서 사용하세요.
+</p>
+<h2 id="변경-미리보기와-적용" tabindex="-1">변경 미리보기와 적용 <a class="header-anchor" href="#변경-미리보기와-적용" aria-label="Permalink to &quot;변경 미리보기와 적용&quot;">​</a>
+</h2>
+<p>GUI는 모듈 추가·교체·제외와 계약 정책을 가상 변경으로 계산하고, 적용 시 대응하는 CLI 명령을 실행합니다. 미리보기와 적용을 구분해 결과를 확인합니다.
+</p>
+<p>레지스트리에 연결되지 않아도 로컬 조립과 검증은 동작할 수 있습니다. 온라인 후보 검색은 별도의 레지스트리 연결이 필요합니다.
+</p>
+<p>전체 명령은 <a href="../reference/cli.html">CLI 레퍼런스</a>에서 확인하세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="validation.html"><small>이전 문서</small><span>검증과 문제 해결</span></a><a href="ui-contracts.html"><small>다음 문서</small><span>UI 계약 설계</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#cli의-기본-순서">CLI의 기본 순서 ​</a><a href="#gui-실행">GUI 실행 ​</a><a href="#변경-미리보기와-적용">변경 미리보기와 적용 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

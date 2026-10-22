@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLI 명령어 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/reference/cli.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="index.html" aria-current="page">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>레퍼런스
+</h2>
+<nav aria-label="레퍼런스 문서"><a href="index.html">전체 보기</a><a href="manifest.html">logic.json</a><a href="contracts.html">계약 문자열</a><a href="cli.html" aria-current="page">CLI 명령어</a><a href="runtime.html">런타임 API</a><a href="api.html">공개 조회 API</a><a href="diagnostics.html">오류와 버전</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="cli-명령어" tabindex="-1">CLI 명령어 <a class="header-anchor" href="#cli-명령어" aria-label="Permalink to &quot;CLI 명령어&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-auto-cli/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>CLI 패키지는 <code>logic-auto-cli</code>, 실행 명령은 <code>logic</code>입니다. 설치한 버전의 <code>logic --help</code>와 원본 README가 상세 옵션의 기준입니다.
+</p>
+<h2 id="명령-지도" tabindex="-1">명령 지도 <a class="header-anchor" href="#명령-지도" aria-label="Permalink to &quot;명령 지도&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>목적
+</th>
+<th>명령
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>시작
+</td>
+<td><code>logic init</code>
+</td>
+</tr>
+<tr>
+<td>구성
+</td>
+<td><code>add</code>, <code>include</code>, <code>remove</code>, <code>exclude</code>
+</td>
+</tr>
+<tr>
+<td>계약 후보 정책
+</td>
+<td><code>reject</code>, <code>accept</code>
+</td>
+</tr>
+<tr>
+<td>하위 별칭
+</td>
+<td><code>link</code>
+</td>
+</tr>
+<tr>
+<td>정보
+</td>
+<td><code>info</code>, <code>detail</code>, <code>table</code>, <code>tree</code>, <code>why</code>
+</td>
+</tr>
+<tr>
+<td>검사
+</td>
+<td><code>validate</code>, <code>check</code>, <code>contract</code>, <code>recommend</code>
+</td>
+</tr>
+<tr>
+<td>화면
+</td>
+<td><code>gui</code>
+</td>
+</tr>
+<tr>
+<td>레지스트리 조회
+</td>
+<td><code>search</code>, <code>view</code>
+</td>
+</tr>
+<tr>
+<td>회원·발행
+</td>
+<td><code>register</code>, <code>login</code>, <code>logout</code>, <code>whoami</code>, <code>publish</code>, <code>unpublish</code>
+</td>
+</tr>
+<tr>
+<td>설정
+</td>
+<td><code>config</code>, <code>set</code>, <code>unset</code>
+</td>
+</tr>
+<tr>
+<td>DB
+</td>
+<td><code>schema plan</code>, <code>diff</code>, <code>sync</code>, <code>relation</code>, <code>reference</code>, <code>extend</code>, <code>naming</code>, <code>recreate</code>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="자주-쓰는-조회" tabindex="-1">자주 쓰는 조회 <a class="header-anchor" href="#자주-쓰는-조회" aria-label="Permalink to &quot;자주 쓰는 조회&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tree</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --contract</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tree</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --contract</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --format</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> json</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> search</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -s</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 주문,결제</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --kind</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> db</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> search</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> api:member.login</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> view</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @ghost/ui-blog-cms</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --versions</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --dependents</span></span></code></pre>
+</div>
+<h2 id="레지스트리-선택" tabindex="-1">레지스트리 선택 <a class="header-anchor" href="#레지스트리-선택" aria-label="Permalink to &quot;레지스트리 선택&quot;">​</a>
+</h2>
+<p><code>--registry &lt;url&gt;</code> → <code>LOGIC_REGISTRY</code> → 기본 <code>http://127.0.0.1:3000</code> 순서입니다. 검색·상세 조회는 로그인 없이 사용할 수 있고, 발행·취소는 토큰과 소유권이 필요합니다.
+</p>
+<p><code>logic remove</code>는 로컬 의존 선언 제거이며 <code>logic unpublish</code>는 레지스트리 출판 취소입니다. 동작 대상을 구분하세요.
+</p>
+<h2 id="조립-검증" tabindex="-1">조립 검증 <a class="header-anchor" href="#조립-검증" aria-label="Permalink to &quot;조립 검증&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> validate</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --strict</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> check</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --strict</span></span></code></pre>
+</div>
+<p><a href="../guide/validation.html">검증 가이드</a>에서 기본 경고와 strict 동작의 차이를 확인하세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="contracts.html"><small>이전 문서</small><span>계약 문자열</span></a><a href="runtime.html"><small>다음 문서</small><span>런타임 API</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#명령-지도">명령 지도 ​</a><a href="#자주-쓰는-조회">자주 쓰는 조회 ​</a><a href="#레지스트리-선택">레지스트리 선택 ​</a><a href="#조립-검증">조립 검증 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

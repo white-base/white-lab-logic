@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>계약 문자열 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/reference/contracts.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="index.html" aria-current="page">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>레퍼런스
+</h2>
+<nav aria-label="레퍼런스 문서"><a href="index.html">전체 보기</a><a href="manifest.html">logic.json</a><a href="contracts.html" aria-current="page">계약 문자열</a><a href="cli.html">CLI 명령어</a><a href="runtime.html">런타임 API</a><a href="api.html">공개 조회 API</a><a href="diagnostics.html">오류와 버전</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="계약-문자열" tabindex="-1">계약 문자열 <a class="header-anchor" href="#계약-문자열" aria-label="Permalink to &quot;계약 문자열&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/spec/18-contract-namespace-syntax.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>계약 축(expect/provide)과 네임스페이스 축(namespace/mutex/recommend)은 목적과 파서 프로파일이 다릅니다.
+</p>
+<h2 id="계약-표기" tabindex="-1">계약 표기 <a class="header-anchor" href="#계약-표기" aria-label="Permalink to &quot;계약 표기&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>예시
+</th>
+<th>의미
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.title</code>
+</td>
+<td>로컬 계약
+</td>
+</tr>
+<tr>
+<td><code>api:page.title</code>
+</td>
+<td>전역 API 계약
+</td>
+</tr>
+<tr>
+<td><code>pkg:@scope/owner#page.title</code>
+</td>
+<td>owner를 지정한 로컬 계약
+</td>
+</tr>
+<tr>
+<td><code>api:?page.actions</code>
+</td>
+<td>전역 API, 선택 요구 0~1
+</td>
+</tr>
+<tr>
+<td><code>api:+page.item</code>
+</td>
+<td>전역 API, 요구 1개 이상
+</td>
+</tr>
+</tbody>
+</table>
+<p>수량한정자는 scope 뒤에 둡니다. expect만 수량을 선언할 수 있으며 provide에는 min/max를 쓰지 않습니다.
+</p>
+<h2 id="와일드카드" tabindex="-1">와일드카드 <a class="header-anchor" href="#와일드카드" aria-label="Permalink to &quot;와일드카드&quot;">​</a>
+</h2>
+<p>provide는 꼬리 와일드카드로 경로를 제공할 수 있습니다. 신규 expect는 구체 경로를 선언합니다.
+</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>provide 패턴
+</th>
+<th>경로 범위
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.*</code>
+</td>
+<td>정확히 한 단계 하위
+</td>
+</tr>
+<tr>
+<td><code>page.**</code>
+</td>
+<td>한 단계 이상 하위
+</td>
+</tr>
+</tbody>
+</table>
+<p>두 패턴 모두 자기 자신인 <code>page</code>를 포함하지 않습니다. 경로 일치는 매칭의 한 조건일 뿐이며 scope·owner·도달 범위·수량을 별도로 적용합니다.
+</p>
+<h2 id="정확한-키와-기능-패턴" tabindex="-1">정확한 키와 기능 패턴 <a class="header-anchor" href="#정확한-키와-기능-패턴" aria-label="Permalink to &quot;정확한 키와 기능 패턴&quot;">​</a>
+</h2>
+<p>무자격 <code>page.title</code>의 정규화 키에는 선언 owner가 포함됩니다. A와 B의 계약 키는 서로 다릅니다. UI 기능 패턴 조회는 이름 사용 사례를 탐색하려고 같은 scope·경로를 묶지만 계약의 정체성은 바꾸지 않습니다.
+</p>
+<h2 id="피해야-할-표기" tabindex="-1">피해야 할 표기 <a class="header-anchor" href="#피해야-할-표기" aria-label="Permalink to &quot;피해야 할 표기&quot;">​</a>
+</h2>
+<ul>
+<li>폐기된 <code>ns:</code> 대신 계약에는 <code>api:</code>를 사용합니다.
+</li>
+<li>신규 expect에서 와일드카드를 정의하지 않습니다.
+</li>
+<li>수량을 export 멤버 개수로 해석하지 않습니다.
+</li>
+<li>namespace를 계약 키와 같은 식별자로 취급하지 않습니다.
+</li>
+</ul>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="manifest.html"><small>이전 문서</small><span>logic.json</span></a><a href="cli.html"><small>다음 문서</small><span>CLI 명령어</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#계약-표기">계약 표기 ​</a><a href="#와일드카드">와일드카드 ​</a><a href="#정확한-키와-기능-패턴">정확한 키와 기능 패턴 ​</a><a href="#피해야-할-표기">피해야 할 표기 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

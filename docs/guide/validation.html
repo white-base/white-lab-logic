@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>검증과 문제 해결 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/validation.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html">제외와 교체</a><a href="contracts.html">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html" aria-current="page">검증과 문제 해결</a><a href="tools.html">CLI와 GUI</a><a href="ui-contracts.html">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="검증과-문제-해결" tabindex="-1">검증과 문제 해결 <a class="header-anchor" href="#검증과-문제-해결" aria-label="Permalink to &quot;검증과 문제 해결&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-auto-cli/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>선언 형식과 조립 결과를 따로 검사하면 문제의 위치를 찾기 쉽습니다.
+</p>
+<h2 id="두-검사-명령" tabindex="-1">두 검사 명령 <a class="header-anchor" href="#두-검사-명령" aria-label="Permalink to &quot;두 검사 명령&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>명령
+</th>
+<th>확인 내용
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>logic validate</code>
+</td>
+<td>manifest 선언·kind 조합·경로와 정합성
+</td>
+</tr>
+<tr>
+<td><code>logic check</code>
+</td>
+<td>조립 결과의 계약 충족·수량·mutex·resolve
+</td>
+</tr>
+<tr>
+<td><code>logic tree --contract</code>
+</td>
+<td>Context 트리와 계약 연결 근거
+</td>
+</tr>
+</tbody>
+</table>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> validate</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --strict</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> check</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --strict</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">logic</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tree</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --contract</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --format</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> json</span></span></code></pre>
+</div>
+<p><code>validate</code>는 패키지 설치·DB 접속·index.js 로딩을 하지 않습니다. <code>check</code>는 조립 결과를 검사하며 필수 계약 미충족 등은 기본적으로 경고일 수 있습니다. CI에서 경고를 실패로 처리하려면 strict 모드를 사용합니다.
+</p>
+<h2 id="stage-해석" tabindex="-1">Stage 해석 <a class="header-anchor" href="#stage-해석" aria-label="Permalink to &quot;Stage 해석&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>단계
+</th>
+<th>의미
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stage 1
+</td>
+<td>알림·경고. 조립 계속
+</td>
+</tr>
+<tr>
+<td>Stage 2
+</td>
+<td>해결할 조립 조건에 대한 경고
+</td>
+</tr>
+<tr>
+<td>Stage 3
+</td>
+<td>무결성 위반 등으로 중단
+</td>
+</tr>
+</tbody>
+</table>
+<p>검사에서의 경고와 실제 동적 주입 시점의 중단은 다를 수 있습니다. 동적 module loader는 최소 제공자 수 미달이면 부분 주입하지 않고 중단합니다.
+</p>
+<h2 id="진단-순서" tabindex="-1">진단 순서 <a class="header-anchor" href="#진단-순서" aria-label="Permalink to &quot;진단 순서&quot;">​</a>
+</h2>
+<ol>
+<li>오류의 <code>code</code>, <code>stage</code>, <code>path</code>, <code>hint</code>를 확인합니다.
+</li>
+<li><code>package.json</code>과 <code>logic.json</code>이 같은 디렉터리에 있는지 확인합니다.
+</li>
+<li>DB/UI 대상이 올바른 depend 칸에 있는지 확인합니다.
+</li>
+<li>경로가 패키지 이름이 아닌 Context key인지 확인합니다.
+</li>
+<li>scope·owner·수량과 reject/accept를 확인합니다.
+</li>
+<li>같은 버전의 실제 export와 소비 코드를 확인합니다.
+</li>
+</ol>
+<p><a href="../reference/diagnostics.html">오류와 버전</a> · <a href="policies.html">허용·거부</a>
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="schema.html"><small>이전 문서</small><span>DB 스키마</span></a><a href="tools.html"><small>다음 문서</small><span>CLI와 GUI</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#두-검사-명령">두 검사 명령 ​</a><a href="#stage-해석">Stage 해석 ​</a><a href="#진단-순서">진단 순서 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>예제 안내 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/examples/">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="index.html" aria-current="page">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>예제
+</h2>
+<nav aria-label="예제 문서"><a href="index.html" aria-current="page">예제 안내</a><a href="basic.html">기본 조립</a><a href="blog.html">블로그 조립</a><a href="domains.html">쇼핑몰·ERP 탐색</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="조립-예제" tabindex="-1">조립 예제 <a class="header-anchor" href="#조립-예제" aria-label="Permalink to &quot;조립 예제&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-server/ghost/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>직접 조립하는 예제와 검색용 카탈로그를 구별해 살펴보세요.
+</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>예제
+</th>
+<th>무엇을 확인하나요?
+</th>
+<th>실행·데이터 성격
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./basic.html">기본 조립</a>
+</td>
+<td>선언·계약·트리와 로컬 GUI
+</td>
+<td>참조 워크스페이스의 Ghost 조립
+</td>
+</tr>
+<tr>
+<td><a href="./blog.html">블로그</a>
+</td>
+<td>댓글 제외·교체, 데이터 기능 재사용
+</td>
+<td>blog-pnpm 실제 시연 프로젝트
+</td>
+</tr>
+<tr>
+<td><a href="./domains.html">쇼핑몰·ERP</a>
+</td>
+<td>도메인별 모듈·계약·대안 검색
+</td>
+<td>업무 로직 없는 Ghost 메타데이터
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="현재-카탈로그의-범위" tabindex="-1">현재 카탈로그의 범위 <a class="header-anchor" href="#현재-카탈로그의-범위" aria-label="Permalink to &quot;현재 카탈로그의 범위&quot;">​</a>
+</h2>
+<p>조회 화면은 <code>logic-runtime-workspace/packages/logic-server/ghost/</code>의 공개 등록 대상 패키지를 기존 레지스트리 로직으로 정규화한 스냅샷입니다. private 소비자 root는 제외합니다.
+</p>
+<p>Ghost 패키지는 실제 package.json·logic.json 디렉터리를 갖지만 업무 로직을 제공하지 않습니다. DB module의 선택적 tables.json은 등록용 직접 테이블 메타데이터입니다.
+</p>
+<p><code>@ghost/*</code>와 <code>@fixture/*</code>는 공개 npm 레지스트리의 배포 패키지로 안내하지 않습니다. 원본 워크스페이스 접근과 의존 설치가 필요한 샘플입니다.
+</p>
+<h2 id="버전과-확인-범위" tabindex="-1">버전과 확인 범위 <a class="header-anchor" href="#버전과-확인-범위" aria-label="Permalink to &quot;버전과 확인 범위&quot;">​</a>
+</h2>
+<p>페이지의 원본 링크는 문서 작성 시 참조한 커밋을 가리킵니다. 예제 문서에 기록된 검증과 이 사이트 자체의 빌드·조회 검증은 별개입니다. 카탈로그만으로 실제 비즈니스 실행이나 호환성을 보장하지 않습니다.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="basic.html"><small>다음 문서</small><span>기본 조립</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#현재-카탈로그의-범위">현재 카탈로그의 범위 ​</a><a href="#버전과-확인-범위">버전과 확인 범위 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

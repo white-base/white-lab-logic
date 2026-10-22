@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>기본 조립 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/examples/basic.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="../guide/index.html">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="index.html" aria-current="page">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>예제
+</h2>
+<nav aria-label="예제 문서"><a href="index.html">예제 안내</a><a href="basic.html" aria-current="page">기본 조립</a><a href="blog.html">블로그 조립</a><a href="domains.html">쇼핑몰·ERP 탐색</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="기본-조립-살펴보기" tabindex="-1">기본 조립 살펴보기 <a class="header-anchor" href="#기본-조립-살펴보기" aria-label="Permalink to &quot;기본 조립 살펴보기&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/packages/logic-server/ghost/README.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p>Ghost 워크스페이스에서 카탈로그 검색과 계약 트리를 확인합니다. 원본 저장소에 접근할 수 있어야 하며, 업무 기능을 실행하는 예제는 아닙니다.
+</p>
+<h2 id="_1-워크스페이스-준비" tabindex="-1">1. 워크스페이스 준비 <a class="header-anchor" href="#_1-워크스페이스-준비" aria-label="Permalink to &quot;1. 워크스페이스 준비&quot;">​</a>
+</h2>
+<p>원본 <code>logic-runtime-workspace</code> 저장소를 준비하고 루트에서 실행합니다.
+</p>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --frozen-lockfile</span></span></code></pre>
+</div>
+<h2 id="_2-ghost-레지스트리-준비" tabindex="-1">2. Ghost 레지스트리 준비 <a class="header-anchor" href="#_2-ghost-레지스트리-준비" aria-label="Permalink to &quot;2. Ghost 레지스트리 준비&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> seed:ghost</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> start:ghost</span></span></code></pre>
+</div>
+<p>샘플 서버는 기본 포트 3001을 사용합니다. 기존 사용 DB와 구분된 Ghost 레지스트리를 사용하세요.
+</p>
+<h2 id="_3-다른-터미널에서-조회" tabindex="-1">3. 다른 터미널에서 조회 <a class="header-anchor" href="#_3-다른-터미널에서-조회" aria-label="Permalink to &quot;3. 다른 터미널에서 조회&quot;">​</a>
+</h2>
+<div class="language-sh vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> search</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --kind</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ui</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --all</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> view</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> @ghost/ui-blog-cms</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> tree</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --contract</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --filter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> logic-server</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ghost:cli</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> check</span></span></code></pre>
+</div>
+<p><code>ghost:cli</code>는 준비된 ghost-workbench를 기준으로 실행하고 Ghost 레지스트리에 연결합니다. CLI <code>search</code>는 조립 문맥의 영향을 받을 수 있고 <code>--all</code>은 전체 후보를 살펴보는 데 사용합니다.
+</p>
+<h2 id="_4-웹-카탈로그와-대조" tabindex="-1">4. 웹 카탈로그와 대조 <a class="header-anchor" href="#_4-웹-카탈로그와-대조" aria-label="Permalink to &quot;4. 웹 카탈로그와 대조&quot;">​</a>
+</h2>
+<p><a href="../catalog/package/index.html?name=%40ghost%2Fui-blog-cms&amp;version=1.0.0">블로그 CMS 상세</a>에서 다음 내용을 비교합니다.
+</p>
+<ul>
+<li>DB와 UI에 대한 depend 선언.
+</li>
+<li>editor UI에 대한 include 선언.
+</li>
+<li>필수 toolbar와 선택 comment 계약.
+</li>
+<li>등록 선언과 로컬 실효 트리의 차이.
+</li>
+</ul>
+<p>이후 <a href="./blog.html">블로그 실행 예제</a>에서 실제 화면·DB 기능을 살펴보세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="index.html"><small>이전 문서</small><span>예제 안내</span></a><a href="blog.html"><small>다음 문서</small><span>블로그 조립</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#_1-워크스페이스-준비">1. 워크스페이스 준비 ​</a><a href="#_2-ghost-레지스트리-준비">2. Ghost 레지스트리 준비 ​</a><a href="#_3-다른-터미널에서-조회">3. 다른 터미널에서 조회 ​</a><a href="#_4-웹-카탈로그와-대조">4. 웹 카탈로그와 대조 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>

@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-export async function validateSnapshot(directory = resolve(import.meta.dirname, '../docs/public/data')) {
+export async function validateSnapshot(directory = resolve(import.meta.dirname, '../docs/data')) {
   const read = async (name) => JSON.parse(await readFile(resolve(directory, `${name}.json`), 'utf8'));
   const [meta, { items: packages }, { items: contracts }, { items: patterns }, { items: providers }] = await Promise.all(['meta', 'packages', 'contracts', 'patterns', 'providers'].map(read));
   assert.equal(meta.schemaVersion, 1);

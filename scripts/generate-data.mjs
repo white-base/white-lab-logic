@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, rename, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rename, rm, readFile, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { resolve, join, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -83,12 +83,15 @@ try {
   const meta = { schemaVersion: 1, generatedAt: new Date().toISOString(), sourceRepo, sourceRef, sourceDirty,
     dataset: 'ghost', isSample: true, complete: true, scope: 'All non-private Ghost packages and their registered versions; direct latest-version expect declarations.',
     counts: { packages: packages.length, versions: packages.reduce((n, p) => n + p.versions.length, 0), contracts: contracts.length, patterns: patterns.length, providers: providers.length } };
-  const output = join(root, 'docs/public/data');
+  const output = join(root, 'docs/data');
   const temporary = await mkdtemp(join(root, '.snapshot-'));
   try {
     for (const [file, value] of Object.entries({ meta, packages: { items: packages }, contracts: { items: contracts }, patterns: { items: patterns }, providers: { items: providers } })) {
       await writeFile(join(temporary, `${file}.json`), `${JSON.stringify(value, null, 2)}\n`);
     }
+    // The document index is managed from HTML, independently from registry data.
+    try { await writeFile(join(temporary, 'search-index.json'), await readFile(join(output, 'search-index.json'))); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
     const { validateSnapshot } = await import('./validate-data.mjs');
     await validateSnapshot(temporary);
     await mkdir(resolve(output, '..'), { recursive: true });

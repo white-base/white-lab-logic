@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>계약 연결 · Logic</title>
+  <meta name="description" content="Logic 조립 문서와 모듈·계약 조회. DB와 UI를 연결하는 모듈 조립 플랫폼.">
+  <meta name="theme-color" content="#17674a">
+  <link rel="canonical" href="https://logic.bindmodel.com/guide/contracts.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
+  <script type="module" src="../assets/js/site.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#main-content">본문으로 이동</a>
+
+<header class="site-header">
+<div class="header-inner">
+    <a class="site-brand" href="../index.html" aria-label="Logic 홈"><img src="../assets/logo.svg" width="30" height="30" alt=""><span>Logic</span></a>
+    <button class="header-search" data-open-search aria-label="문서 검색"><span aria-hidden="true">⌕</span><span class="search-label">문서 검색</span><kbd>⌘ K</kbd></button>
+
+<nav id="main-nav" class="main-nav" aria-label="주 메뉴"><a href="../start/index.html">시작하기</a><a href="index.html" aria-current="page">조립 가이드</a><a href="../reference/index.html">레퍼런스</a><a href="../catalog/index.html">모듈 조회</a><a href="../contracts/index.html">계약 조회</a><a href="../examples/index.html">예제</a>
+</nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="어두운 화면으로 전환" aria-pressed="false">◐</button>
+    <button class="menu-toggle" data-menu-toggle aria-label="주 메뉴 열기" aria-controls="main-nav" aria-expanded="false">☰</button>
+
+</div>
+</header>
+
+<main id="main-content" class="doc-layout"><button class="doc-sidebar-toggle" aria-controls="doc-sidebar" aria-expanded="false">문서 메뉴 ☰</button>
+<aside class="doc-sidebar" id="doc-sidebar">
+<h2>조립 가이드
+</h2>
+<nav aria-label="조립 가이드 문서"><a href="index.html">조립 흐름</a><a href="dependencies.html">의존과 포함</a><a href="replacement.html">제외와 교체</a><a href="contracts.html" aria-current="page">계약 연결</a><a href="policies.html">허용·거부와 링크</a><a href="configuration.html">인스턴스와 설정</a><a href="schema.html">DB 스키마</a><a href="validation.html">검증과 문제 해결</a><a href="tools.html">CLI와 GUI</a><a href="ui-contracts.html">UI 계약 설계</a>
+</nav>
+</aside>
+<div class="doc-content">
+<article class="doc-article">
+<div>
+<h1 id="계약-연결" tabindex="-1">계약 연결 <a class="header-anchor" href="#계약-연결" aria-label="Permalink to &quot;계약 연결&quot;">​</a>
+</h1>
+<aside class="source-note"><span class="source-dot"></span><span>적용 기준 <code>engine 1.x</code> · 2026.10.22</span><a href="https://github.com/white-base/logic-runtime-workspace/blob/5ae5d4adf6c2e706c58b3b8ee336e1fb5c1af3c4/docs/spec/12-expect-provide.md" target="_blank" rel="noreferrer">원본 문서 ↗</a>
+</aside>
+<p><code>expect</code>는 필요한 기능을, <code>provide</code>는 제공하는 기능을 선언합니다. 계약 이름뿐 아니라 scope·owner·도달 범위·요구 수량이 연결을 결정합니다.
+</p>
+<h2 id="선언-방향" tabindex="-1">선언 방향 <a class="header-anchor" href="#선언-방향" aria-label="Permalink to &quot;선언 방향&quot;">​</a>
+</h2>
+<ul>
+<li>DB 모듈·번들과 UI 번들은 flat <code>expect</code> 배열을 선언합니다.
+</li>
+<li>UI 모듈은 expect를 선언하지 않습니다.
+</li>
+<li>UI 모듈·번들이 <code>provide.ui</code>, <code>provide.db</code>로 구현 또는 재제공을 선언합니다.
+</li>
+<li><code>provide.reexport</code>라는 별도 필드는 없습니다.
+</li>
+</ul>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;expect&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;page.title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;contract&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;page.actions&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;min&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;max&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;description&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;선택 작업 영역&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  ]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;provide&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;ui&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;page.title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;page.actions&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">] }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre>
+</div>
+<p>두 조각은 각각 소비자와 제공자의 선언 예시입니다. 하나의 완전한 manifest가 아니며, 실제 연결은 조립 위치와 kind 규칙도 충족해야 합니다.
+</p>
+<h2 id="scope와-owner" tabindex="-1">scope와 owner <a class="header-anchor" href="#scope와-owner" aria-label="Permalink to &quot;scope와 owner&quot;">​</a>
+</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>표기
+</th>
+<th>탐색 의미
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.title</code>
+</td>
+<td>로컬 계약. 실효 직계 관계를 기준으로 연결
+</td>
+</tr>
+<tr>
+<td><code>api:page.title</code>
+</td>
+<td>전역 API 계약. 실효 의존 폐포에서 탐색
+</td>
+</tr>
+<tr>
+<td><code>pkg:@scope/name#page.title</code>
+</td>
+<td>지정한 패키지 owner의 로컬 계약을 탐색
+</td>
+</tr>
+</tbody>
+</table>
+<p>무자격 계약과 <code>api:</code> 계약은 정체성이 다릅니다. owner가 다른 로컬 계약도 별도입니다. <a href="../reference/contracts.html">계약 문법</a>에서 상세 조건을 확인하세요.
+</p>
+<h2 id="수량과-재제공" tabindex="-1">수량과 재제공 <a class="header-anchor" href="#수량과-재제공" aria-label="Permalink to &quot;수량과 재제공&quot;">​</a>
+</h2>
+<p>기본 요구 수량은 1개입니다. <code>?</code>는 0~1개, <code>+</code>는 1개 이상을 요구하며 객체형 min/max로 수량을 표현할 수 있습니다. 수량은 <strong>제공자 수</strong>이며 함수 멤버 개수와 다릅니다.
+</p>
+<p>DB 계열 expect는 전파되지만, 하위 제공을 상위로 보이게 하려면 자신의 <code>provide.ui</code>/<code>provide.db</code>에 명시적으로 다시 선언해야 합니다.
+</p>
+<h2 id="검색-결과를-사용하는-방법" tabindex="-1">검색 결과를 사용하는 방법 <a class="header-anchor" href="#검색-결과를-사용하는-방법" aria-label="Permalink to &quot;검색 결과를 사용하는 방법&quot;">​</a>
+</h2>
+<p><a href="../contracts/index.html">정확 계약 집계</a>는 owner를 보존합니다. <a href="../contracts/patterns/index.html">UI 기능 패턴</a>은 같은 이름의 사례를 모아 보여줍니다. 패턴 사용 수나 제공 선언만으로 구현 호환성을 추정하지 말고 동일 버전의 export와 소비 코드를 확인하세요.
+</p>
+</div>
+</article>
+<nav class="doc-pager" aria-label="문서 이동"><a href="replacement.html"><small>이전 문서</small><span>제외와 교체</span></a><a href="policies.html"><small>다음 문서</small><span>허용·거부와 링크</span></a>
+</nav>
+</div>
+<nav class="doc-outline" aria-label="이 페이지에서"><strong>이 페이지에서</strong><a href="#선언-방향">선언 방향 ​</a><a href="#scope와-owner">scope와 owner ​</a><a href="#수량과-재제공">수량과 재제공 ​</a><a href="#검색-결과를-사용하는-방법">검색 결과를 사용하는 방법 ​</a>
+</nav>
+</main>
+
+<footer class="site-footer">
+<p>모듈을 연결하는 더 나은 방법.
+</p>
+<p>Logic · bindmodel
+</p>
+</footer>
+</body>
+</html>
