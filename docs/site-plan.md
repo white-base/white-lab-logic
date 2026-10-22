@@ -1,7 +1,7 @@
 # Logic 문서·조회 사이트 구성계획서
 
-> **상태**: 정적 HTML 방식으로 전환 중
-> **버전**: 0.5
+> **상태**: 정적 HTML 전환·GitHub Pages 게시·HTTPS 검증 완료
+> **버전**: 0.6
 > **최종수정**: 2026-10-22
 > **대상 도메인**: `logic.bindmodel.com`
 > **사이트 저장소**: `white-base/white-lab-logic`
@@ -296,7 +296,7 @@ white-lab-logic/
 | 실제 패키지 포함 | 공개 범위·배포 상태를 확인한 패키지만 | 실데이터 갱신 시 |
 | API 운영 주소 | 미지정, 1차는 정적 데이터 | API 연계 착수 시 |
 | 데이터 갱신 | 원본 변경 후 수동 재생성·검토 | 자동화 필요성이 생기면 확대 |
-| 도메인 | `logic.bindmodel.com`, 연결 상태 미확인 | Pages 배포 준비 시 |
+| 도메인 | `logic.bindmodel.com`, DNS·HTTPS 연결 확인 | 완료 내역은 §16.2 |
 
 ## 13. 참조 자료
 
@@ -379,9 +379,9 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - [x] 공통 CSS·JavaScript와 JSON 데이터를 `/docs` 안에 배치.
 - [x] 기존 문서 검색·모듈 검색·계약/패턴 조회·상세 기능을 순수 JavaScript로 전환.
 - [x] VitePress·Vue 의존성과 전용 빌드·배포 설정 제거.
-- [ ] `main /docs` 직접 게시와 `CNAME`·`.nojekyll` 구성.
+- [x] `main /docs` 직접 게시와 `CNAME`·`.nojekyll` 구성.
 - [x] HTML 링크·데이터·검색 테스트 및 브라우저·모바일 검증.
-- [ ] 변경을 저장소와 GitHub Pages에 반영하고 결과 기록.
+- [x] 변경을 저장소와 GitHub Pages에 반영하고 결과 기록.
 
 문서 본문은 실제 HTML에 포함한다. 작성자용 계획서와 README는 Markdown으로 유지한다. 조회 서비스는 공개 JSON 스냅샷을 브라우저에서 읽으며, 업무 로직·실효 조립 판정의 지원 범위는 그대로 유지한다.
 
@@ -395,3 +395,14 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - Chrome에서 한글 모듈 필터, 상세 계약·의존 관계와 키보드 탭 이동, 정확 계약 사례, owner가 다른 UI 패턴 사례, 제공 후보 검색, 문서 검색·이동, 미수집 버전 안내를 확인했다.
 - 모바일 390px에서 문서·카탈로그의 가로 넘침이 없고 상단 메뉴·문서 사이드바가 동작함을 확인했다. 콘솔 오류·경고는 없었다.
 - 격리한 임시 출력 경로에서 데이터 생성·교체를 두 번 실행해 `docs/data` 출력과 문서 검색 인덱스 보존을 확인했다. 참조 저장소와 공개 스냅샷은 이 검증에서 수정하지 않았다.
+
+### 16.2 게시·도메인 확인 결과
+
+- HTML 구현 커밋 `e9e9047`을 `main`에 반영했다. [원격 자동 검증](https://github.com/white-base/white-lab-logic/actions/runs/39758639669)에서 테스트·데이터·HTML 검사가 모두 성공했다.
+- GitHub Pages Source를 **Deploy from a branch**, Branch를 **main**, Folder를 **/docs**로 저장했다. Custom domain은 `logic.bindmodel.com`을 유지했다. 설정 전환 시 GitHub가 생성한 루트 CNAME 커밋 `14f5185`도 로컬에 동기화했다. 실제 게시 소스의 도메인 파일은 `docs/CNAME`이다.
+- [브랜치 게시 작업](https://github.com/white-base/white-lab-logic/actions/runs/39758736021)이 성공했다(58초). 프런트엔드 패키지 설치·VitePress 빌드 없이 `/docs`의 정적 파일을 게시했다.
+- 사용자가 추가한 `logic → white-base.github.io` CNAME을 가비아 권한 네임서버에서 확인했다. Pages의 DNS 검증도 성공했다.
+- 인증서가 유효한 `https://logic.bindmodel.com/`의 HTTP 200과 HTTP→HTTPS 301 전환을 확인했다. Pages의 **Enforce HTTPS**도 저장했다.
+- 실제 도메인의 홈·문서·조회 상세 HTML, CSS, JavaScript·공통 모듈, 메타데이터가 로컬 파일과 동일함을 확인했다. Chrome에서도 한글 `블로그` 검색과 UI 필터가 7개 결과를 표시하며 콘솔 오류·경고가 없었다.
+
+공개 주소: **https://logic.bindmodel.com/**. 이후 문서·데이터 변경은 `/docs`를 수정하고 검증한 뒤 `main`에 반영한다.

@@ -64,6 +64,6 @@ node scripts/validate-data.mjs
 - Custom domain: **logic.bindmodel.com**
 - 가비아 DNS: **CNAME logic → white-base.github.io**
 
-`main`에 HTML을 반영하면 GitHub Pages가 `/docs`를 직접 게시합니다. `.github/workflows/check.yml`은 소스 검증만 담당하며 프런트엔드 빌드·artifact 배포를 수행하지 않습니다. 인증서 발급 후 Pages에서 Enforce HTTPS를 적용합니다.
+`main`에 HTML을 반영하면 GitHub Pages가 `/docs`를 직접 게시합니다. `.github/workflows/check.yml`은 소스 검증만 담당하며 프런트엔드 빌드·artifact 배포를 수행하지 않습니다. 2026-10-22에 DNS·인증서·Enforce HTTPS와 실제 사이트 접속을 확인했습니다.
 
 규격의 단일 원본은 `logic-runtime-workspace/docs/spec/`입니다. [구성계획서와 진행 기록](docs/site-plan.md), [문서 안내](docs/README.md)를 참고하세요.
