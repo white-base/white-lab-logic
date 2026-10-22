@@ -1,6 +1,6 @@
 # Logic 문서·조회 사이트 구성계획서
 
-> **상태**: 1차 구현·Pages 배포 완료 · DNS/HTTPS 확인 중
+> **상태**: 1차 구현·Pages 배포 완료 · DNS 연결 대기
 > **버전**: 0.4
 > **최종수정**: 2026-10-22
 > **대상 도메인**: `logic.bindmodel.com`
@@ -365,3 +365,6 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - 사용자가 가비아에 `CNAME logic → white-base.github.io`를 직접 추가하기로 했다. 최종 접속·인증서 상태는 DNS 반영 이후 확인한다.
 - 첫 배포에서 확인한 Action 런타임 경고를 해소하기 위해 Node 24 기반 Action으로 갱신했다. 사이트의 빌드 Node 버전은 22를 유지한다. Runner 이미지는 Ubuntu 24.04로 고정했다.
 - 갱신 근거: [checkout 변경 이력](https://github.com/actions/checkout/blob/main/CHANGELOG.md), [pnpm Action](https://github.com/pnpm/action-setup/blob/v6/action.yml), [configure-pages 릴리스](https://github.com/actions/configure-pages/releases), [upload-pages-artifact 릴리스](https://github.com/actions/upload-pages-artifact/releases), [deploy-pages 릴리스](https://github.com/actions/deploy-pages/releases).
+- 최종 Action 구성의 원격 검증도 성공했다: [최종 Pages 배포](https://github.com/white-base/white-lab-logic/actions/runs/39751655716), 사이트 코드 커밋 `43d4e0a`, build/deploy 전체 46초.
+- 데이터 생성 도구를 격리된 임시 출력 위치에서 두 번 실행해 최초 생성과 기존 스냅샷 교체를 모두 확인했다. 원본 저장소와 사이트의 공개 데이터 파일은 이 검증에서 변경하지 않았다.
+- 최종 확인 시 가비아 권한 네임서버는 `logic.bindmodel.com`에 NXDOMAIN을 반환했다. 따라서 사용자 CNAME 추가 이후 실제 도메인 접속과 HTTPS 인증서·강제 설정 확인이 남아 있다. Pages 배포 성공을 DNS 연결 완료로 취급하지 않는다.
