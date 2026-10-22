@@ -1,5 +1,17 @@
 import { href, escapeHTML as e, loadJSON, searchDocuments } from './shared.mjs';
 
+document.querySelectorAll('[data-video-src]').forEach((preview) => preview.addEventListener('click', (event) => {
+  event.preventDefault();
+  const frame = document.createElement('iframe');
+  frame.src = preview.dataset.videoSrc;
+  frame.title = 'Logic 모듈 조립 시연: 주문관리 앱을 작업보드로 바꾸기';
+  frame.allow = 'autoplay; encrypted-media; picture-in-picture; web-share';
+  frame.allowFullscreen = true;
+  frame.referrerPolicy = 'strict-origin-when-cross-origin';
+  preview.replaceWith(frame);
+  frame.focus();
+}));
+
 const menuButton = document.querySelector('[data-menu-toggle]');
 const menu = document.querySelector('#main-nav');
 menuButton?.addEventListener('click', () => {

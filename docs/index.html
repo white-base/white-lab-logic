@@ -8,9 +8,9 @@
   <meta name="theme-color" content="#17674a">
   <link rel="canonical" href="https://logic.bindmodel.com/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/site.css?v=20261022-video">
   <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
-  <script type="module" src="assets/js/site.js"></script>
+  <script type="module" src="assets/js/site.js?v=20261022-video"></script>
 
 </head>
 <body>
@@ -172,17 +172,12 @@
     </div>
     <a href="https://www.youtube.com/watch?v=ZZ4Cr58TWk0" target="_blank" rel="noopener noreferrer">YouTube에서 보기 <span aria-hidden="true">↗</span></a>
   </div>
-  <div class="home-video-player">
-    <iframe
-      width="1120"
-      height="630"
-      src="https://www.youtube.com/embed/ZZ4Cr58TWk0"
-      title="Logic 모듈 조립 시연: 주문관리 앱을 작업보드로 바꾸기"
-      loading="lazy"
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe>
+  <div class="home-video-player" data-video-player>
+    <a class="home-video-preview" href="https://www.youtube.com/watch?v=ZZ4Cr58TWk0" target="_blank" rel="noopener noreferrer" aria-label="Logic 모듈 조립 시연 영상 재생" data-video-src="https://www.youtube.com/embed/ZZ4Cr58TWk0?autoplay=1">
+      <img src="assets/logic-demo.jpg" alt="모듈 조립으로 주문관리 앱을 작업보드로 바꾸는 Logic 영상" width="1280" height="720" loading="lazy">
+      <span class="home-video-play" aria-hidden="true">▶</span>
+      <span class="home-video-label" aria-hidden="true">영상 재생</span>
+    </a>
   </div>
 </section>
 </div>
