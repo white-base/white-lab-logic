@@ -414,7 +414,7 @@ GitHub Pages를 대상으로 현재 저장소에서 구현한다. 별도의 Site
 - [x] 구현 전에 이 Markdown 파일에 위치·방식·검증 계획 기록.
 - [x] `docs/index.html` 하단에 제목·소개와 YouTube 임베드, 원본 영상 링크 추가.
 - [x] 화면 너비에 맞는 16:9 미리보기, 재생 버튼을 누를 때 플레이어 로딩, 방문 시 자동 재생 없는 구성 적용.
-- [ ] HTML 검사 및 데스크톱·모바일 화면 확인 후 GitHub Pages에 반영.
+- [x] HTML 검사 및 데스크톱·모바일 화면 확인 후 GitHub Pages에 반영.
 
 YouTube 공식 oEmbed 응답으로 영상 제목과 임베드 제공 여부를 확인했다. 영상은 주문관리 앱을 모듈 조립으로 작업보드로 바꾸는 내용을 소개한다. 동영상 파일은 저장소에 복사하지 않고 YouTube 플레이어를 사용한다.
 
@@ -423,3 +423,5 @@ YouTube 공식 oEmbed 응답으로 영상 제목과 임베드 제공 여부를 �
 - `node scripts/validate-site.mjs`와 `git diff --check`를 통과했다.
 - 데스크톱과 모바일 390px에서 제목·원본 링크·16:9 영역의 배치를 확인했다. 모바일 문서 너비가 390px로 가로 넘침이 없었다.
 - Chrome에서 재생 버튼을 누른 뒤 실제 영상이 페이지 내부에서 재생되고, 영상 컨트롤로 일시중지되는 것을 확인했다.
+- 최종 구현 커밋 `0a1229d`의 [원격 자동 검증](https://github.com/white-base/white-lab-logic/actions/runs/39760795104)과 [GitHub Pages 게시](https://github.com/white-base/white-lab-logic/actions/runs/39760795392)가 성공했다.
+- 실제 `logic.bindmodel.com`에서 미리보기 이미지의 정상 로딩과 버튼을 누른 뒤 페이지 내부의 영상 재생을 확인했다. 홈페이지 하단에 영상·원본 링크가 게시된 상태다.
