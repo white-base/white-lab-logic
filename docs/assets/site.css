@@ -1271,6 +1271,10 @@ code {
   height:100%;
   object-fit:contain
 }
+.gui-slide-image--detail img {
+  object-fit:cover;
+  object-position:center 35%
+}
 .gui-slide figcaption {
   display:flex;
   align-items:start;
