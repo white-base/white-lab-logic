@@ -94,14 +94,16 @@ img {
 .site-brand {
   display:flex;
   align-items:center;
-  gap:10px;
-  font-size:25px;
-  font-weight:750;
-  letter-spacing:-1.3px;
-  white-space:nowrap
+  flex-shrink:0;
+  color:#2b2b2a
 }
-.site-brand img {
-  display:block
+.site-brand .brand-logo {
+  display:block;
+  width:132px;
+  height:32px
+}
+.dark .site-brand {
+  color:#f4f4f0
 }
 .header-search {
   display:flex;
