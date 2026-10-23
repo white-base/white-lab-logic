@@ -1197,6 +1197,157 @@ code {
   min-height:40px;
   gap:16px
 }
+.home-gui-description {
+  margin-top:10px;
+  color:var(--logic-c-text-2);
+  font-size:13px;
+  line-height:1.9;
+  word-break:keep-all
+}
+.gui-carousel {
+  overflow:hidden;
+  border:1px solid var(--logic-c-divider);
+  border-radius:10px;
+  background:var(--logic-c-bg);
+  box-shadow:0 12px 40px #172d2108
+}
+.gui-carousel-toolbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-height:55px;
+  padding:5px 24px;
+  border-bottom:1px solid var(--logic-c-divider);
+  background:var(--logic-c-bg-alt)
+}
+.gui-carousel-brand {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:13px;
+  font-weight:650
+}
+.gui-carousel-brand>span:first-child {
+  color:var(--logic-c-brand-1);
+  font-size:21px
+}
+.gui-carousel-tag {
+  margin-left:8px;
+  color:var(--logic-c-text-2);
+  font-size:11px;
+  font-weight:400
+}
+.gui-carousel-toggle {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  min-height:44px;
+  padding:0 8px;
+  font-size:11px;
+  color:var(--logic-c-text-2);
+  cursor:pointer
+}
+.gui-carousel-toggle [data-carousel-toggle-icon] {
+  width:14px;
+  font-size:12px;
+  text-align:center
+}
+.gui-slide {
+  margin:0;
+  animation:gui-slide-reveal .35s ease-out
+}
+.gui-slide-image {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  aspect-ratio:16/9;
+  padding:12px;
+  background:#191b21
+}
+.gui-slide-image img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain
+}
+.gui-slide figcaption {
+  display:flex;
+  align-items:start;
+  gap:22px;
+  min-height:104px;
+  padding:24px 28px 16px;
+  border-top:1px solid var(--logic-c-divider)
+}
+.gui-slide-number {
+  padding-top:4px;
+  color:var(--logic-c-brand-1);
+  font-family:var(--logic-font-family-mono);
+  font-size:11px;
+  white-space:nowrap
+}
+.gui-slide h3 {
+  font-size:16px;
+  font-weight:650;
+  line-height:1.6;
+  letter-spacing:-.4px;
+  word-break:keep-all
+}
+.gui-slide p {
+  margin-top:5px;
+  color:var(--logic-c-text-2);
+  font-size:12px;
+  line-height:1.8;
+  word-break:keep-all
+}
+.gui-carousel-nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:0 24px 16px
+}
+.gui-carousel-dots,.gui-carousel-arrows {
+  display:flex;
+  align-items:center;
+  gap:4px
+}
+.gui-carousel-dots button,.gui-carousel-arrows button {
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border-radius:5px;
+  cursor:pointer
+}
+.gui-carousel-dots span {
+  width:6px;
+  height:6px;
+  border-radius:8px;
+  background:var(--logic-c-text-2);
+  opacity:.35;
+  transition:width .2s,opacity .2s
+}
+.gui-carousel-dots [aria-current] span {
+  width:24px;
+  background:var(--logic-c-brand-1);
+  opacity:1
+}
+.gui-carousel-arrows button {
+  border:1px solid var(--logic-c-divider);
+  font-size:19px
+}
+.gui-carousel button:hover {
+  color:var(--logic-c-brand-1);
+  background:var(--logic-c-bg-alt)
+}
+.gui-carousel [hidden] {
+  display:none
+}
+@keyframes gui-slide-reveal {
+  from { opacity:.3 }
+  to { opacity:1 }
+}
 .home-section.home-video-section {
   padding:0 0 60px
 }
@@ -2045,6 +2196,43 @@ select {
     grid-template-columns:1fr;
     gap:12px
   }
+  .home-gui-description {
+    font-size:12px
+  }
+  .gui-carousel-toolbar {
+    padding:5px 12px
+  }
+  .gui-carousel-tag {
+    display:none
+  }
+  .gui-slide-image {
+    aspect-ratio:4/3;
+    padding:4px
+  }
+  .gui-slide figcaption {
+    gap:12px;
+    min-height:128px;
+    padding:19px 16px 12px
+  }
+  .gui-slide h3 {
+    font-size:14px
+  }
+  .gui-slide p {
+    font-size:11px
+  }
+  .gui-slide-number {
+    font-size:9px
+  }
+  .gui-carousel-nav {
+    gap:8px;
+    padding:0 12px 12px
+  }
+  .gui-carousel-dots {
+    gap:0
+  }
+  .gui-carousel-dots button {
+    width:32px
+  }
   .journey-card {
     padding:22px
   }
@@ -2237,6 +2425,12 @@ select {
     scroll-behavior:auto
   }
   a,button {
+    transition:none
+  }
+  .gui-slide {
+    animation:none
+  }
+  .gui-carousel-dots span {
     transition:none
   }
 }

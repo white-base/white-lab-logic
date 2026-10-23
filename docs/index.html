@@ -8,9 +8,10 @@
   <meta name="theme-color" content="#17674a">
   <link rel="canonical" href="https://logic.bindmodel.com/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=20261023-logo">
-  <link rel="stylesheet" href="assets/site.css?v=20261023-logo">
+  <link rel="stylesheet" href="assets/site.css?v=20261023-gui">
   <script>try{if(localStorage.getItem('logic-theme')==='dark')document.documentElement.classList.add('dark')}catch{}</script>
   <script type="module" src="assets/js/site.js?v=20261022-video"></script>
+  <script type="module" src="assets/js/gui-carousel.js?v=20261023-gui"></script>
 
 </head>
 <body>
@@ -83,6 +84,59 @@
 <div class="stat-intro"><span class="eyebrow">EXPLORE THE CATALOG</span><strong>다음 조립의 재료를 만나보세요.</strong>
 </div><a href="catalog/index.html"><strong data-stat="packages">60<span>개</span></strong><small>샘플 모듈·번들 ↗</small></a><a href="contracts/index.html"><strong data-stat="contracts">45<span>개</span></strong><small>계약 그룹 ↗</small></a><a href="contracts/patterns/index.html"><strong data-stat="patterns">26<span>개</span></strong><small>UI 기능 패턴 ↗</small></a>
 </div>
+<section class="home-section home-gui-section" aria-labelledby="home-gui-title">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">VISUAL ASSEMBLY</div>
+      <h2 id="home-gui-title">조립 구조를 한눈에,<br class="mobile-break"> 연결은 더 직관적으로.</h2>
+      <p class="home-gui-description">모듈의 연결 관계와 계약 상태를 Logic GUI에서 시각적으로 확인하세요.<br class="desktop-break">관련 모듈을 묶고 펼치며, 복잡한 조립 구조도 명확하게 살펴볼 수 있습니다.</p>
+    </div>
+    <a href="guide/tools.html">GUI 사용 가이드 <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="gui-carousel" data-gui-carousel role="region" aria-roledescription="캐러셀" aria-label="Logic GUI 조립 화면">
+    <div class="gui-carousel-toolbar">
+      <span class="gui-carousel-brand"><span aria-hidden="true">◈</span> Logic GUI <span class="gui-carousel-tag">모듈을 연결하는 작업 공간</span></span>
+      <button type="button" class="gui-carousel-toggle" data-carousel-toggle aria-controls="gui-slides" hidden>
+        <span data-carousel-toggle-icon aria-hidden="true">Ⅱ</span><span data-carousel-toggle-text>일시정지</span>
+      </button>
+    </div>
+    <div id="gui-slides" class="gui-carousel-slides" aria-live="off">
+      <figure class="gui-slide" data-carousel-slide role="group" aria-roledescription="슬라이드" aria-label="1 / 5">
+        <div class="gui-slide-image"><img src="assets/gui/assembly-overview.png" alt="탐색기, 모듈 연결 그래프, 계약 패널과 검증 콘솔을 한 화면에 보여주는 Logic GUI" width="1753" height="1165" loading="lazy"></div>
+        <figcaption><span class="gui-slide-number" aria-hidden="true">01 / 05</span><div><h3>조립의 전체 구조를 한눈에</h3><p>모듈, 계약, 검증 상태를 하나의 작업 공간에서 살펴보세요.</p></div></figcaption>
+      </figure>
+      <figure class="gui-slide" data-carousel-slide role="group" aria-roledescription="슬라이드" aria-label="2 / 5" hidden>
+        <div class="gui-slide-image"><img src="assets/gui/group-expanded.png" alt="UI 계약 그룹을 펼쳐 내부 모듈과 연결 관계를 표시한 화면" width="1170" height="878" loading="lazy"></div>
+        <figcaption><span class="gui-slide-number" aria-hidden="true">02 / 05</span><div><h3>관련 모듈을 하나의 그룹으로</h3><p>그룹을 펼쳐 내부 구성과 모듈 간 연결을 함께 확인하세요.</p></div></figcaption>
+      </figure>
+      <figure class="gui-slide" data-carousel-slide role="group" aria-roledescription="슬라이드" aria-label="3 / 5" hidden>
+        <div class="gui-slide-image"><img src="assets/gui/contract-connections.png" alt="UI 번들과 스타일 모듈 사이의 의존 관계와 요구·제공 계약을 선과 포트로 표시한 화면" width="1170" height="878" loading="lazy"></div>
+        <figcaption><span class="gui-slide-number" aria-hidden="true">03 / 05</span><div><h3>연결 관계와 계약 상태를 명확하게</h3><p>의존 관계와 제공·요구 계약을 선과 포트로 구분해 파악하세요.</p></div></figcaption>
+      </figure>
+      <figure class="gui-slide" data-carousel-slide role="group" aria-roledescription="슬라이드" aria-label="4 / 5" hidden>
+        <div class="gui-slide-image"><img src="assets/gui/module-selection.png" alt="세 개의 모듈을 선택하고 패키지로 묶기 메뉴를 표시한 화면" width="1170" height="878" loading="lazy"></div>
+        <figcaption><span class="gui-slide-number" aria-hidden="true">04 / 05</span><div><h3>여러 모듈을 선택해 한 번에 정리</h3><p>함께 다룰 모듈을 선택하고 패키지로 묶어 조립 구조를 정리하세요.</p></div></figcaption>
+      </figure>
+      <figure class="gui-slide" data-carousel-slide role="group" aria-roledescription="슬라이드" aria-label="5 / 5" hidden>
+        <div class="gui-slide-image"><img src="assets/gui/package-collapsed.png" alt="세 모듈을 UI 계약 패키지로 접고 외부 계약과 DB 연결을 요약한 화면" width="1170" height="878" loading="lazy"></div>
+        <figcaption><span class="gui-slide-number" aria-hidden="true">05 / 05</span><div><h3>복잡한 구조도 간결하게</h3><p>패키지를 접어 핵심 계약과 외부 연결에 집중하세요.</p></div></figcaption>
+      </figure>
+    </div>
+    <div class="gui-carousel-nav" data-carousel-controls hidden>
+      <div class="gui-carousel-dots" role="group" aria-label="조립 화면 선택">
+        <button type="button" data-carousel-go="0" aria-label="1번 화면: 조립의 전체 구조" aria-current="true" aria-controls="gui-slides"><span></span></button>
+        <button type="button" data-carousel-go="1" aria-label="2번 화면: 그룹 펼치기" aria-controls="gui-slides"><span></span></button>
+        <button type="button" data-carousel-go="2" aria-label="3번 화면: 연결 관계와 계약" aria-controls="gui-slides"><span></span></button>
+        <button type="button" data-carousel-go="3" aria-label="4번 화면: 여러 모듈 선택" aria-controls="gui-slides"><span></span></button>
+        <button type="button" data-carousel-go="4" aria-label="5번 화면: 패키지 접기" aria-controls="gui-slides"><span></span></button>
+      </div>
+      <div class="gui-carousel-arrows">
+        <button type="button" data-carousel-prev aria-label="이전 조립 화면" aria-controls="gui-slides"><span aria-hidden="true">←</span></button>
+        <button type="button" data-carousel-next aria-label="다음 조립 화면" aria-controls="gui-slides"><span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="home-section">
 <div class="section-heading">
 <div>
